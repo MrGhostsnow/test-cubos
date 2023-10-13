@@ -5,8 +5,11 @@ import { ContainerMain } from "./styles";
 
 export default function Home() {
   return (
-    <ContainerMain>
-      <HomePage />
-    </ContainerMain>
+    <>
+      <NavBar />
+      <ContainerMain>
+        <HomePage />
+      </ContainerMain>
+    </>
   );
 }

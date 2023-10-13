@@ -1,4 +1,3 @@
-"use client";
 import { ContainerNavBar, Title } from "./styles";
 
 const NavBar = () => {
