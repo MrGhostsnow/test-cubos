@@ -4,6 +4,7 @@ import MovieCard from "../MovieCard";
 import { ContainerMoviesPage } from "./styles";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 interface IMovie {
   id: number;
@@ -45,10 +46,17 @@ const MoviesPage = () => {
       const searchMoviesURL = `https://api.themoviedb.org/3/search/movie?query=${searchMovie}&include_adult=false&language=pt-BR&page=1&api_key=${apiKey}`;
       fetch(searchMoviesURL)
         .then((response) => response.json())
-        .then((data) => setSearchResult(data.results))
+        .then((data) => {
+          // Converta a pesquisa e os títulos para letras minúsculas
+          const lowercaseSearch = searchMovie.toLowerCase();
+          const filteredResults = data.results.filter((movie: any) =>
+            movie.title.toLowerCase().includes(lowercaseSearch)
+          );
+          setSearchResult(filteredResults);
+        })
         .catch((err) => console.error(err));
     } else {
-      setSearchResult([]); // Limpa os resultados da pesquisa quando a caixa de pesquisa está vazia
+      setSearchResult([]);
     }
   }, [searchMovie]);
 
@@ -58,13 +66,31 @@ const MoviesPage = () => {
       {searchMovie ? (
         searchResult.length > 0 ? (
           searchResult.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+            <Link
+              key={movie.id}
+              href={{
+                pathname: `/movie-details/${movie.title}`,
+                query: { title: movie.title },
+              }}
+            >
+              <MovieCard movie={movie} />
+            </Link>
           ))
         ) : (
           <p>Nenhum resultado encontrado</p>
         )
       ) : movies.length > 0 ? (
-        movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+        movies.map((movie) => (
+          <Link
+            key={movie.id}
+            href={{
+              pathname: `/movie-details/${movie.title}`,
+              query: { title: movie.title },
+            }}
+          >
+            <MovieCard movie={movie} />
+          </Link>
+        ))
       ) : (
         <p>Carregando...</p>
       )}
