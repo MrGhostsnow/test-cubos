@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <ContainerHome>
       {/* <NavBar /> */}
-      <SearchBar />
+
       <MoviesPage />
     </ContainerHome>
   );

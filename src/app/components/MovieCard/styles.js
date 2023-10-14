@@ -10,7 +10,9 @@ export const ContainerMovieCard = styled.div`
 `;
 
 export const MoviePoster = styled.img`
-  height: 330px;
+  max-height: 330px;
+  width: 300px;
+  color: #000;
 `;
 
 export const SectionInfos = styled.div`

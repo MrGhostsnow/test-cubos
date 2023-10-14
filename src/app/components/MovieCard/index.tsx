@@ -80,6 +80,7 @@ export default function MovieCard({ movie }: { movie: IMovie }) {
     <ContainerMovieCard>
       <MoviePoster
         src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+        alt={movie.title}
       />
       <SectionInfos>
         <SectionMovieAverage>
