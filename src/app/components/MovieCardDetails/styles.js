@@ -11,7 +11,7 @@ export const ContainerMovieCard = styled.div`
 `;
 
 export const MoviePoster = styled.img`
-  max-height: 530px;
+  max-height: 500px;
   width: 400px;
   color: #000;
   margin-top: -2rem;
@@ -82,7 +82,10 @@ export const MovieDescription = styled.p`
 
 export const MovieYear = styled.p`
   color: #000;
-  margin-left: 7rem;
+  position: relative;
+  right: -15rem;
+  top: -2rem;
+  width: 100px;
 `;
 
 export const SectionGenre = styled.div`
@@ -175,4 +178,9 @@ export const MovieRevenue = styled.p`
 export const Label = styled.p`
   color: #1f75cb;
   font-size: 18px;
+`;
+
+export const SectionPosterAndDate = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

@@ -7,8 +7,8 @@ export const ContainerMovieDetails = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
-  border: 1px solid #ccc;
+  height: 1400px;
+  margin-bottom: 10rem;
 `;
 
 export const ContainerCard = styled.div`

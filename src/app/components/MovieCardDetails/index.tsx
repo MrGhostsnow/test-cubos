@@ -26,6 +26,7 @@ import {
   SectionMovieInfos,
   SectionLabelInfo,
   Label,
+  SectionPosterAndDate,
 } from "./styles";
 
 interface IGenre {
@@ -114,7 +115,6 @@ export default function MovieCardDetails({ movie }: { movie: IMovie }) {
       <SectionInfos>
         <SectionTitle>
           <MovieTitle>{movie.title}</MovieTitle>
-          <MovieYear>{formatDate(movie.release_date)}</MovieYear>
         </SectionTitle>
         <SectionTextMovie>
           <SectionDescription>
@@ -162,36 +162,23 @@ export default function MovieCardDetails({ movie }: { movie: IMovie }) {
             <MovieGenre>
               {movie.genres && movie.genres.length > 0
                 ? movie.genres.map((genre, index) => (
-                    <Genre>{genre.name}</Genre>
+                    <Genre key={index}>{genre.name}</Genre>
                   ))
                 : "Desconhecido"}
             </MovieGenre>
-            {/* <MovieGenre>
-              {movie.genre_ids && movie.genre_ids.length > 0
-                ? movie.genre_ids.map((genreId, index) => {
-                    const genre = moviesGenre.find(
-                      (item) => item.id === genreId
-                    );
-                    const genreName = genre ? genre.name : "Desconhecido";
-
-                    return (
-                      <Genre key={index} className="genre">
-                        {genreName}
-                      </Genre>
-                    );
-                  })
-                : "Carregando..."}
-            </MovieGenre> */}
           </SectionGenre>
         </SectionTextMovie>
         <SectionMovieAverage>
           <MovieAverage>{transformForPercent(movie.vote_average)}</MovieAverage>
         </SectionMovieAverage>
       </SectionInfos>
-      <MoviePoster
-        src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
-        alt={movie.title}
-      />
+      <SectionPosterAndDate>
+        <MovieYear>{formatDate(movie.release_date)}</MovieYear>
+        <MoviePoster
+          src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
+          alt={movie.title}
+        />
+      </SectionPosterAndDate>
     </ContainerMovieCard>
   );
 }

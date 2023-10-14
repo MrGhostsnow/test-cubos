@@ -1,4 +1,4 @@
-import { ContainerSearchBar, InputSearch } from "./styles";
+import { ContainerSearchBar, InputSearch, Button } from "./styles";
 import { useState } from "react";
 
 interface SearchBarProps {
@@ -25,7 +25,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         value={searchTerm}
         onChange={handleInputChange}
       />
-      <button onClick={handleSearch}>Pesquisar</button>
+      <Button onClick={handleSearch}>Pesquisar</Button>
     </ContainerSearchBar>
   );
 };
