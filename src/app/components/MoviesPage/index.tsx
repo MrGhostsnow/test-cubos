@@ -69,8 +69,8 @@ const MoviesPage = () => {
             <Link
               key={movie.id}
               href={{
-                pathname: `/movie-details/${movie.title}`,
-                query: { title: movie.title },
+                pathname: `/movie-details/${movie.id}`,
+                query: { id: movie.id },
               }}
             >
               <MovieCard movie={movie} />
@@ -84,8 +84,8 @@ const MoviesPage = () => {
           <Link
             key={movie.id}
             href={{
-              pathname: `/movie-details/${movie.title}`,
-              query: { title: movie.title },
+              pathname: `/movie-details/${movie.id}`,
+              query: { id: movie.id },
             }}
           >
             <MovieCard movie={movie} />
