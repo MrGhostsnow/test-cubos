@@ -7,6 +7,8 @@ export const ContainerMoviesPage = styled.div`
   justify-content: center;
   align-items: center;
   width: 80%;
-  height: 100%;
+  height: 100v%;
+  margin-bottom: 10rem;
+  padding-bottom: 10rem;
   border: 1px solid #ccc;
 `;

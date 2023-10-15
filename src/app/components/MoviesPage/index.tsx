@@ -5,6 +5,7 @@ import { ContainerMoviesPage } from "./styles";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Pagination from "../Pagination";
 
 interface IMovie {
   id: number;
@@ -16,25 +17,32 @@ interface IMovie {
   genre_ids: number[];
 }
 
-// Importações e definições de tipos
-
-const MoviesPage = () => {
+const MoviesPage: React.FC = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [searchMovie, setSearchMovie] = useState("");
   const [searchResult, setSearchResult] = useState<IMovie[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const apiKey = "b716e119325a7aeeeff2782636710df3";
   const moviesURL = "https://api.themoviedb.org/3/movie/";
   const searchMovieURL = "https://api.themoviedb.org/3/search/movie/";
+  const maxPages = 3;
 
-  const getMovies = async (moviesURL: string) => {
-    const response = await fetch(moviesURL);
+  const moviesPerPage = 10;
+
+  const getMovies = async (moviesURL: string, page: number = 1) => {
+    const response = await fetch(
+      `${moviesURL}popular?api_key=${apiKey}&language=pt-BR&page=${page}`
+    );
     const data = await response.json();
     setMovies(data.results);
+    const totalMovies = data.total_results;
+    const totalPageCount = Math.ceil(totalMovies / moviesPerPage);
+    setTotalPages(Math.min(totalPageCount, maxPages)); // Limitar o total de páginas
   };
 
   useEffect(() => {
-    const popularMoviesURL = `${moviesURL}popular?api_key=${apiKey}&language=pt-BR`;
-    getMovies(popularMoviesURL);
+    getMovies(moviesURL);
   }, []);
 
   const handleSearch = (searchTerm: string) => {
@@ -47,25 +55,36 @@ const MoviesPage = () => {
       fetch(searchMoviesURL)
         .then((response) => response.json())
         .then((data) => {
-          // Converta a pesquisa e os títulos para letras minúsculas
           const lowercaseSearch = searchMovie.toLowerCase();
-          const filteredResults = data.results.filter((movie: any) =>
+          const filteredResults = data.results.filter((movie: IMovie) =>
             movie.title.toLowerCase().includes(lowercaseSearch)
           );
           setSearchResult(filteredResults);
+          setTotalPages(1);
         })
         .catch((err) => console.error(err));
     } else {
       setSearchResult([]);
+      getMovies(moviesURL);
     }
   }, [searchMovie]);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    getMovies(moviesURL, pageNumber);
+  };
+
+  const startIndex = (currentPage - 1) * moviesPerPage;
+  const endIndex = startIndex + moviesPerPage;
+
+  console.log(searchResult);
 
   return (
     <ContainerMoviesPage>
       <SearchBar onSearch={handleSearch} />
       {searchMovie ? (
         searchResult.length > 0 ? (
-          searchResult.map((movie) => (
+          searchResult.slice(startIndex, endIndex).map((movie) => (
             <Link
               key={movie.id}
               href={{
@@ -80,7 +99,7 @@ const MoviesPage = () => {
           <p>Nenhum resultado encontrado</p>
         )
       ) : movies.length > 0 ? (
-        movies.map((movie) => (
+        movies.slice(startIndex, endIndex).map((movie) => (
           <Link
             key={movie.id}
             href={{
@@ -93,6 +112,13 @@ const MoviesPage = () => {
         ))
       ) : (
         <p>Carregando...</p>
+      )}
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
       )}
     </ContainerMoviesPage>
   );
