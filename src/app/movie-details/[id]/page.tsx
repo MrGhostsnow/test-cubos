@@ -6,9 +6,8 @@ import { useEffect, useState } from "react";
 import { IMovie } from "@/app/interfaces/MovieInterface";
 import { MovieDetailsProps } from "@/app/interfaces/MovieDetails";
 import NavBar from "@/app/components/NavBar";
-import VideoPlayer from "@/app/components/VideoPlayer";
 
-const MovieDetails: React.FC<MovieDetailsProps> = ({ videoKey }) => {
+const MovieDetails: React.FC = () => {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
 
@@ -32,18 +31,6 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ videoKey }) => {
         console.error(error);
         setMovieDetails(null);
       });
-
-    fetch(
-      `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=${apiKey}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setMovieVideos(data.results[0]);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   }, [id]);
 
   if (!movieDetails) {
@@ -57,11 +44,6 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ videoKey }) => {
         <ContainerCard>
           <MovieCardDetails movie={movieDetails} />
         </ContainerCard>
-        {videoKey ? (
-          <VideoPlayer videoKey={videoKey} />
-        ) : (
-          <p>Vídeo não disponível.</p>
-        )}
       </ContainerMovieDetails>
     </>
   );

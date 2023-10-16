@@ -1,7 +1,7 @@
 import { SectionVideoPlayer } from "./styles";
 
 interface VideoPlayerProps {
-  videoKey: string;
+  videoKey: any[];
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoKey }) => {

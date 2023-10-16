@@ -5,11 +5,12 @@ export const ContainerMovieCard = styled.div`
   width: 1200px;
   margin-top: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   @media screen and (max-width: 1024px) {
     flex-direction: column;
-    height: 700px;
+    height: 1000px;
     width: 900px;
     margin-top: 80px;
   }
@@ -19,7 +20,23 @@ export const ContainerMovieCard = styled.div`
   @media screen and (max-width: 480px) {
     width: 400px;
     justify-content: space-between;
+    height: 1900px;
+  }
+`;
+
+export const ContainerInfos = styled.div`
+  display: flex;
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
     height: 1200px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 400px;
+
+    height: 1900px;
   }
 `;
 
@@ -33,6 +50,10 @@ export const MoviePoster = styled.img`
     height: 350px;
     margin-bottom: 2rem;
   }
+  @media screen and (max-width: 480px) {
+    margin-bottom: -5rem;
+    margin-top: 2rem;
+  }
 `;
 
 export const SectionInfos = styled.div`
@@ -40,7 +61,7 @@ export const SectionInfos = styled.div`
   flex-direction: column;
   margin-top: -4.1rem;
   @media screen and (max-width: 1024px) {
-    height: 730px;
+    height: 880px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -60,7 +81,7 @@ export const SectionMovieAverage = styled.div`
   left: 52rem;
   border: 4px solid #2fe4ed;
   border-radius: 50%;
-  width: 125px;
+  width: 115px;
   height: 130px;
   background-color: #1f75cb;
   @media screen and (max-width: 1024px) {
@@ -146,6 +167,7 @@ export const MovieYear = styled.p`
   width: 100px;
   @media screen and (max-width: 480px) {
     right: -12.5rem;
+    top: 2rem;
   }
 `;
 

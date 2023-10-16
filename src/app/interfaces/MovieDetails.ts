@@ -1,3 +1,3 @@
 export interface MovieDetailsProps {
-    videoKey: string;
+    videoKey: any;
   }
