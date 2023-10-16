@@ -15,9 +15,9 @@ const MoviesPage: React.FC = () => {
   const [totalPages, setTotalPages] = useState(1);
   const apiKey = "b716e119325a7aeeeff2782636710df3";
   const moviesURL = "https://api.themoviedb.org/3/movie/";
-  const maxPages = 3;
+  const maxPages = 4;
 
-  const moviesPerPage = 10;
+  const moviesPerPage = 5;
 
   const getMovies = async (moviesURL: string, page: number = 1) => {
     const response = await fetch(
