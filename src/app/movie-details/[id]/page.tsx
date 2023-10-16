@@ -50,8 +50,6 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ videoKey }) => {
     return <div>Carregando...</div>;
   }
 
-  ("https://www.youtube.com/embed/WwAUIwb04c4");
-
   return (
     <>
       <NavBar />
@@ -59,7 +57,11 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ videoKey }) => {
         <ContainerCard>
           <MovieCardDetails movie={movieDetails} />
         </ContainerCard>
-        <VideoPlayer videoKey={videoKey} />
+        {videoKey ? (
+          <VideoPlayer videoKey={videoKey} />
+        ) : (
+          <p>Vídeo não disponível.</p>
+        )}
       </ContainerMovieDetails>
     </>
   );
