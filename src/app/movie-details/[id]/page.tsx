@@ -4,14 +4,11 @@ import MovieCardDetails from "@/app/components/MovieCardDetails";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IMovie } from "@/app/interfaces/MovieInterface";
+import { MovieDetailsProps } from "@/app/interfaces/MovieDetails";
 import NavBar from "@/app/components/NavBar";
 import VideoPlayer from "@/app/components/VideoPlayer";
 
-interface MovieDetailsProps {
-  videoKey: string;
-}
-
-export default function MovieDetails({ videoKey }: { videoKey: string }) {
+const MovieDetails: React.FC<MovieDetailsProps> = ({ videoKey }) => {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
 
@@ -66,4 +63,6 @@ export default function MovieDetails({ videoKey }: { videoKey: string }) {
       </ContainerMovieDetails>
     </>
   );
-}
+};
+
+export default MovieDetails;
