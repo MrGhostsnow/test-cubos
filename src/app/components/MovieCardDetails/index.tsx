@@ -1,5 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { transformForPercent } from "@/app/utils/transformForPercent";
+import { formatDate } from "@/app/utils/formatDate";
+import { formatMinutesToHours } from "@/app/utils/formatMinutesToHours";
+import { translateStatus } from "@/app/utils/translateStatus";
+import { IMovie } from "@/app/interfaces/MovieInterface";
 import {
   ContainerMovieCard,
   MoviePoster,
@@ -29,25 +34,6 @@ import {
   SectionPosterAndDate,
 } from "./styles";
 
-interface IGenre {
-  name: string;
-}
-
-interface IMovie {
-  title: string;
-  release_date: string;
-  vote_average: number;
-  overview: string;
-  poster_path: string;
-  genre_ids: number[];
-  budget: number;
-  original_language: string;
-  revenue: number;
-  runtime: number;
-  status: string;
-  genres: IGenre[];
-}
-
 export default function MovieCardDetails({ movie }: { movie: IMovie }) {
   const [moviesGenre, setMoviesGenre] = useState<any[]>([]);
 
@@ -71,44 +57,6 @@ export default function MovieCardDetails({ movie }: { movie: IMovie }) {
       })
       .catch((err) => console.error(err));
   }, []);
-
-  function transformForPercent(value: number) {
-    if (typeof value !== "number") {
-      throw new Error("O argumento deve ser um número.");
-    }
-    const percent = (value * 10).toFixed(0);
-    return `${percent}%`;
-  }
-
-  function formatDate(data: any) {
-    const dataObj = new Date(data);
-    const dia = dataObj.getDate().toString().padStart(2, "0");
-    const mes = (dataObj.getMonth() + 1).toString().padStart(2, "0");
-    const ano = dataObj.getFullYear();
-    return `${dia}/${mes}/${ano}`;
-  }
-
-  function formatMinutesToHours(minutes: number) {
-    if (typeof minutes !== "number") {
-      return "Valor inválido";
-    }
-
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
-
-    return `${hours}h${remainingMinutes}min`;
-  }
-
-  function translateStatus(status: string) {
-    switch (status.toLowerCase()) {
-      case "released":
-        return "Lançado";
-      case "upcoming":
-        return "Próximo";
-      default:
-        return "Desconhecido";
-    }
-  }
 
   return (
     <ContainerMovieCard>

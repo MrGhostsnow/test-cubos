@@ -1,9 +1,12 @@
 import { ContainerNavBar, Title } from "./styles";
+import Link from "next/link";
 
 const NavBar = () => {
   return (
     <ContainerNavBar>
-      <Title>Movies</Title>
+      <Link href="/">
+        <Title>Movies</Title>
+      </Link>
     </ContainerNavBar>
   );
 };

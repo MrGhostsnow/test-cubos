@@ -2,20 +2,10 @@
 import SearchBar from "../SearchBar";
 import MovieCard from "../MovieCard";
 import { ContainerMoviesPage } from "./styles";
-
 import { useState, useEffect } from "react";
+import { IMovie } from "@/app/interfaces/MovieInterface";
 import Link from "next/link";
 import Pagination from "../Pagination";
-
-interface IMovie {
-  id: number;
-  title: string;
-  release_date: string;
-  vote_average: number;
-  overview: string;
-  poster_path: string;
-  genre_ids: number[];
-}
 
 const MoviesPage: React.FC = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
@@ -38,7 +28,7 @@ const MoviesPage: React.FC = () => {
     setMovies(data.results);
     const totalMovies = data.total_results;
     const totalPageCount = Math.ceil(totalMovies / moviesPerPage);
-    setTotalPages(Math.min(totalPageCount, maxPages)); // Limitar o total de páginas
+    setTotalPages(Math.min(totalPageCount, maxPages));
   };
 
   useEffect(() => {
@@ -51,7 +41,7 @@ const MoviesPage: React.FC = () => {
 
   useEffect(() => {
     if (searchMovie) {
-      const searchMoviesURL = `https://api.themoviedb.org/3/search/movie?query=${searchMovie}&include_adult=false&language=pt-BR&page=1&api_key=${apiKey}`;
+      const searchMoviesURL = `https://api.themoviedb.org/3/search/movie?query=${searchMovie}&include_adult=false&language=pt-BR&page=${currentPage}&api_key=${apiKey}`;
       fetch(searchMoviesURL)
         .then((response) => response.json())
         .then((data) => {
@@ -67,7 +57,7 @@ const MoviesPage: React.FC = () => {
       setSearchResult([]);
       getMovies(moviesURL);
     }
-  }, [searchMovie]);
+  }, [searchMovie, currentPage]);
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -76,8 +66,6 @@ const MoviesPage: React.FC = () => {
 
   const startIndex = (currentPage - 1) * moviesPerPage;
   const endIndex = startIndex + moviesPerPage;
-
-  console.log(searchResult);
 
   return (
     <ContainerMoviesPage>
@@ -113,7 +101,7 @@ const MoviesPage: React.FC = () => {
       ) : (
         <p>Carregando...</p>
       )}
-      {totalPages > 1 && (
+      {totalPages > 0 && (
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}

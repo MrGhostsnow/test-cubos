@@ -2,29 +2,10 @@
 import { ContainerMovieDetails, ContainerCard } from "./styles";
 import MovieCardDetails from "@/app/components/MovieCardDetails";
 import { useSearchParams } from "next/navigation";
-
 import { useEffect, useState } from "react";
+import { IMovie } from "@/app/interfaces/MovieInterface";
 import NavBar from "@/app/components/NavBar";
 import VideoPlayer from "@/app/components/VideoPlayer";
-
-interface IGenre {
-  name: string;
-}
-
-interface IMovie {
-  title: string;
-  release_date: string;
-  vote_average: number;
-  overview: string;
-  poster_path: string;
-  genre_ids: number[];
-  budget: number;
-  original_language: string;
-  revenue: number;
-  runtime: number;
-  status: string;
-  genres: IGenre[];
-}
 
 interface MovieDetailsProps {
   videoKey: string;

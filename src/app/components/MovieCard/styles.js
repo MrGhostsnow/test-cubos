@@ -7,12 +7,28 @@ export const ContainerMovieCard = styled.div`
   margin-top: 20px;
   display: flex;
   background-color: #ececef;
+
+  @media screen and (max-width: 1024px) {
+    width: 950px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 700px;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 400px;
+    justify-content: center;
+  }
 `;
 
 export const MoviePoster = styled.img`
   max-height: 330px;
   width: 300px;
   color: #000;
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
 `;
 
 export const SectionInfos = styled.div`
@@ -34,6 +50,14 @@ export const SectionMovieAverage = styled.div`
   width: 70px;
   height: 100px;
   background-color: #1f75cb;
+
+  @media screen and (max-width: 768px) {
+    left: 25rem;
+    top: 7rem;
+  }
+  @media screen and (max-width: 480px) {
+    left: 18rem;
+  }
 `;
 
 export const MovieAverage = styled.p`
@@ -47,12 +71,25 @@ export const SectionTitle = styled.div`
   background-color: #1f75cb;
   height: 80px;
   width: 980px;
+  @media screen and (max-width: 1024px) {
+    width: 730px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 480px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 400px;
+  }
 `;
 
 export const MovieTitle = styled.h1`
   color: #2fe4ed;
   font-size: 35px;
   margin-left: 7rem;
+
+  @media screen and (max-width: 768px) {
+    margin-left: 1rem;
+  }
 `;
 
 export const SectionTextMovie = styled.div`
@@ -67,16 +104,28 @@ export const SectionDescription = styled.div`
   align-items: center;
   margin-left: 7rem;
   height: 100%;
+  @media screen and (max-width: 768px) {
+    margin-left: 1rem;
+  }
 `;
 
 export const MovieDescription = styled.p`
   color: #000;
   width: 70%;
+  @media screen and (max-width: 768px) {
+    width: 460px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 380px;
+  }
 `;
 
 export const MovieYear = styled.p`
   color: #000;
   margin-left: 7rem;
+  @media screen and (max-width: 768px) {
+    margin-left: 1rem;
+  }
 `;
 
 export const SectionGenre = styled.div`
@@ -86,6 +135,12 @@ export const SectionGenre = styled.div`
   height: 10%;
   width: 70%;
   margin-bottom: 2rem;
+  @media screen and (max-width: 768px) {
+    margin-left: 1rem;
+  }
+  @media screen and (max-width: 480px) {
+    width: 380px;
+  }
 `;
 
 export const MovieGenre = styled.p`

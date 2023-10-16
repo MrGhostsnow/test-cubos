@@ -1,5 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { transformForPercent } from "@/app/utils/transformForPercent";
+import { formatDate } from "@/app/utils/formatDate";
+import { limitDescription } from "@/app/utils/limitDescription";
+import { IMovie } from "@/app/interfaces/MovieInterface";
 import {
   ContainerMovieCard,
   MoviePoster,
@@ -17,25 +21,16 @@ import {
   Genre,
 } from "./styles";
 
-interface IMovie {
-  title: string;
-  release_date: string;
-  vote_average: number;
-  overview: string;
-  poster_path: string;
-  genre_ids: number[];
-}
-
 export default function MovieCard({ movie }: { movie: IMovie }) {
-  const [moviesGenre, setMoviesGenre] = useState<any[]>([]); // Inicialize como uma matriz vazia
+  const [moviesGenre, setMoviesGenre] = useState<any[]>([]);
 
-  function findGenreNameById(genreIds: number[], genresList: any[]): string {
-    const genreNames = genreIds.map((id) => {
-      const genre = genresList.find((genre) => genre.id === id);
-      return genre ? genre.name : "Desconhecido";
-    });
-    return genreNames.join(", ");
-  }
+  // function findGenreNameById(genreIds: number[], genresList: any[]): string {
+  //   const genreNames = genreIds.map((id) => {
+  //     const genre = genresList.find((genre) => genre.id === id);
+  //     return genre ? genre.name : "Desconhecido";
+  //   });
+  //   return genreNames.join(", ");
+  // }
 
   const options = {
     method: "GET",
@@ -58,24 +53,6 @@ export default function MovieCard({ movie }: { movie: IMovie }) {
       .catch((err) => console.error(err));
   }, []);
 
-  function transformForPercent(value: number) {
-    if (typeof value !== "number") {
-      throw new Error("O argumento deve ser um número.");
-    }
-    const percent = (value * 10).toFixed(0);
-    return `${percent}%`;
-  }
-
-  function formatDate(data: any) {
-    const dataObj = new Date(data);
-    const dia = dataObj.getDate().toString().padStart(2, "0");
-    const mes = (dataObj.getMonth() + 1).toString().padStart(2, "0");
-    const ano = dataObj.getFullYear();
-    return `${dia}/${mes}/${ano}`;
-  }
-
-  // ...
-
   return (
     <ContainerMovieCard>
       <MoviePoster
@@ -87,12 +64,14 @@ export default function MovieCard({ movie }: { movie: IMovie }) {
           <MovieAverage>{transformForPercent(movie.vote_average)}</MovieAverage>
         </SectionMovieAverage>
         <SectionTitle>
-          <MovieTitle>{movie.title}</MovieTitle>
+          <MovieTitle>{limitDescription(movie.title, 30)}</MovieTitle>
         </SectionTitle>
         <MovieYear>{formatDate(movie.release_date)}</MovieYear>
         <SectionTextMovie>
           <SectionDescription>
-            <MovieDescription>{movie.overview}</MovieDescription>
+            <MovieDescription>
+              {limitDescription(movie.overview, 250)}
+            </MovieDescription>
           </SectionDescription>
           <SectionGenre>
             <MovieGenre>

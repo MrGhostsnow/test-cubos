@@ -12,4 +12,5 @@ export const ContainerNavBar = styled.div`
 
 export const Title = styled.h1`
   color: #2fe4ed;
+  cursor: pointer;
 `;

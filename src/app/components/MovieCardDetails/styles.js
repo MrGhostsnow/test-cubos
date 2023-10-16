@@ -3,24 +3,53 @@ import styled from "styled-components";
 
 export const ContainerMovieCard = styled.div`
   width: 1200px;
-  height: 530px;
+  // height: 530px;
   margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    height: 700px;
+    width: 900px;
+    margin-top: 80px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 700px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 400px;
+    justify-content: space-between;
+    height: 1200px;
+  }
 `;
 
 export const MoviePoster = styled.img`
   max-height: 500px;
-  width: 400px;
+  width: 350px;
   color: #000;
   margin-top: -2rem;
+  @media screen and (max-width: 1024px) {
+    // display: none;
+    width: 280px;
+    height: 350px;
+    margin-bottom: 2rem;
+  }
 `;
 
 export const SectionInfos = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: -4.1rem;
+  @media screen and (max-width: 1024px) {
+    height: 730px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  @media screen and (max-width: 480px) {
+    height: 800px;
+  }
 `;
 
 export const SectionMovieAverage = styled.div`
@@ -33,9 +62,19 @@ export const SectionMovieAverage = styled.div`
   left: 52rem;
   border: 4px solid #2fe4ed;
   border-radius: 50%;
-  width: 115px;
+  width: 125px;
   height: 130px;
   background-color: #1f75cb;
+  @media screen and (max-width: 1024px) {
+    left: 26rem;
+  }
+  @media screen and (max-width: 768px) {
+    left: 20rem;
+  }
+  @media screen and (max-width: 480px) {
+    left: 7rem;
+    top: 1rem;
+  }
 `;
 
 export const MovieAverage = styled.p`
@@ -48,12 +87,22 @@ export const SectionTitle = styled.div`
   align-items: center;
   height: 100px;
   width: 990px;
+  @media screen and (max-width: 768px) {
+    width: 700px;
+    justify-content: center;
+  }
+  @media screen and (max-width: 480px) {
+    width: 400px;
+  }
 `;
 
 export const MovieTitle = styled.h1`
   color: #1f75cb;
   font-size: 35px;
   margin-left: 9rem;
+  @media screen and (max-width: 768px) {
+    margin-left: 0rem;
+  }
 `;
 
 export const SectionTextMovie = styled.div`
@@ -61,6 +110,12 @@ export const SectionTextMovie = styled.div`
   flex-direction: column;
   justify-content: space-around;
   height: 100%;
+  @media screen and (max-width: 768px) {
+    width: 750px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 400px;
+  }
 `;
 
 export const SectionDescription = styled.div`
@@ -69,7 +124,12 @@ export const SectionDescription = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
-  text-align: left;
+  @media screen and (max-width: 768px) {
+    width: 700px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 400px;
+  }
 `;
 
 export const MovieDescription = styled.p`
@@ -86,6 +146,9 @@ export const MovieYear = styled.p`
   right: -15rem;
   top: -2rem;
   width: 100px;
+  @media screen and (max-width: 480px) {
+    right: -12.5rem;
+  }
 `;
 
 export const SectionGenre = styled.div`
@@ -96,6 +159,13 @@ export const SectionGenre = styled.div`
   height: 50%;
   width: 70%;
   margin-top: 3rem;
+  @media screen and (max-width: 480px) {
+    width: 300px;
+    justify-content: center;
+    margin-left: 3.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
 `;
 
 export const MovieGenre = styled.p`
@@ -117,6 +187,9 @@ export const ContainerTitle = styled.p`
   font-size: 30px;
   text-align: left;
   margin-bottom: 1rem;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 0.5rem;
+  }
 `;
 
 export const SectionMoreInfos = styled.div`
@@ -127,14 +200,26 @@ export const SectionMoreInfos = styled.div`
   height: 100%;
   text-align: left;
   margin-top: 1.5rem;
+  @media screen and (max-width: 768px) {
+    width: 700px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 400px;
+    flex-wrap: wrap;
+  }
 `;
 
 export const SectionMovieInfos = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   border-top: 1px solid #2fe4ed;
   width: 70%;
   text-align: left;
+  @media screen and (max-width: 480px) {
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
 `;
 
 export const SectionLabelInfo = styled.div`
@@ -144,6 +229,9 @@ export const SectionLabelInfo = styled.div`
   justify-content: center;
   margin-top: 1rem;
   text-align: left;
+  @media screen and (max-width: 768px) {
+    margin-top: 0.5rem;
+  }
 `;
 
 export const TitleMoreInfos = styled.p`

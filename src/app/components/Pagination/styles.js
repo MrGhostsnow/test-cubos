@@ -18,7 +18,6 @@ export const ButtonPagination = styled.button`
   padding: 12px 16px;
   margin: 2px;
   cursor: pointer;
-  /* Outros estilos básicos para botões de página */
 
   ${(props) =>
     props.active &&
