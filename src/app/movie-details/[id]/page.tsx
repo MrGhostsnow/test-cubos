@@ -11,7 +11,7 @@ interface MovieDetailsProps {
   videoKey: string;
 }
 
-const MovieDetails: React.FC<MovieDetailsProps> = ({ videoKey }) => {
+export default function MovieDetails({ videoKey }: { videoKey: string }) {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
 
@@ -66,6 +66,4 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ videoKey }) => {
       </ContainerMovieDetails>
     </>
   );
-};
-
-export default MovieDetails;
+}
