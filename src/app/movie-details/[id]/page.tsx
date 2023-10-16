@@ -4,7 +4,6 @@ import MovieCardDetails from "@/app/components/MovieCardDetails";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IMovie } from "@/app/interfaces/MovieInterface";
-import { MovieDetailsProps } from "@/app/interfaces/MovieDetails";
 import NavBar from "@/app/components/NavBar";
 
 const MovieDetails: React.FC = () => {

@@ -8,6 +8,9 @@ export const ContainerNavBar = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #1f75cb;
+  @media screen and (max-width: 480px) {
+    margin-bottom: 12rem;
+  }
 `;
 
 export const Title = styled.h1`

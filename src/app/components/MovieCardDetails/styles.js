@@ -81,7 +81,7 @@ export const SectionMovieAverage = styled.div`
   left: 52rem;
   border: 4px solid #2fe4ed;
   border-radius: 50%;
-  width: 115px;
+  width: 105px;
   height: 130px;
   background-color: #1f75cb;
   @media screen and (max-width: 1024px) {

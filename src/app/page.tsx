@@ -4,11 +4,9 @@ import { ContainerMain } from "./styles";
 
 export default function Home() {
   return (
-    <>
+    <ContainerMain>
       <NavBar />
-      <ContainerMain>
-        <HomePage />
-      </ContainerMain>
-    </>
+      <HomePage />
+    </ContainerMain>
   );
 }
