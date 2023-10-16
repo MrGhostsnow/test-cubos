@@ -24,14 +24,6 @@ import {
 export default function MovieCard({ movie }: { movie: IMovie }) {
   const [moviesGenre, setMoviesGenre] = useState<any[]>([]);
 
-  // function findGenreNameById(genreIds: number[], genresList: any[]): string {
-  //   const genreNames = genreIds.map((id) => {
-  //     const genre = genresList.find((genre) => genre.id === id);
-  //     return genre ? genre.name : "Desconhecido";
-  //   });
-  //   return genreNames.join(", ");
-  // }
-
   const options = {
     method: "GET",
     headers: {

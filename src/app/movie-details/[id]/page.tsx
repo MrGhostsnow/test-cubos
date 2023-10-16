@@ -27,7 +27,6 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ videoKey }) => {
       .then((data) => {
         if (data) {
           setMovieDetails(data);
-          console.log(data);
         } else {
           setMovieDetails(null);
         }

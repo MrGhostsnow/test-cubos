@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export const ContainerMovieCard = styled.div`
   width: 1200px;
-  // height: 530px;
   margin-top: 20px;
   display: flex;
   justify-content: center;
@@ -30,7 +29,6 @@ export const MoviePoster = styled.img`
   color: #000;
   margin-top: -2rem;
   @media screen and (max-width: 1024px) {
-    // display: none;
     width: 280px;
     height: 350px;
     margin-bottom: 2rem;

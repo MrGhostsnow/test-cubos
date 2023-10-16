@@ -29,6 +29,6 @@ export const ButtonPagination = styled.button`
     `}
 
   &:hover {
-    background-color: #f0f0f0; /* Cor de fundo leve ao passar o mouse (opcional) */
+    background-color: #f0f0f0;
   }
 `;
