@@ -68,8 +68,7 @@ export default function MovieCardDetails({ movie }: { movie: IMovie }) {
     )
       .then((response) => response.json())
       .then((data) => {
-        setMovieVideos(data.results[0]);
-        console.log(data);
+        setMovieVideos(data.results[0].key);
       })
       .catch((error) => {
         console.error(error);

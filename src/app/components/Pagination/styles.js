@@ -27,8 +27,5 @@ export const ButtonPagination = styled.button`
       border: 4px solid #2fe4ed;
       font-weight: bold;
     `}
-
-  &:hover {
-    background-color: #f0f0f0;
   }
 `;

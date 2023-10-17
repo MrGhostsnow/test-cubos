@@ -49,7 +49,7 @@ const MoviesPage: React.FC = () => {
             movie.title.toLowerCase().includes(lowercaseSearch)
           );
           setSearchResult(filteredResults);
-          setTotalPages(1);
+          // setTotalPages(1);
         })
         .catch((err) => console.error(err));
     } else {
