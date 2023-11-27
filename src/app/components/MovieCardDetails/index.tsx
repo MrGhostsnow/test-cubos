@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { transformForPercent } from "@/app/utils/transformForPercent";
 import { formatDate } from "@/app/utils/formatDate";
 import { formatMinutesToHours } from "@/app/utils/formatMinutesToHours";
@@ -68,10 +68,12 @@ export default function MovieCardDetails({ movie }: { movie: IMovie }) {
     )
       .then((response) => response.json())
       .then((data) => {
-        setMovieVideos(data.results[0].key);
+        if (movie.genre_ids) {
+          setMovieVideos(data.results[0].key);
+        }
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
       });
   }, []);
 

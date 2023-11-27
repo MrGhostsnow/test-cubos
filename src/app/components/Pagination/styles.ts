@@ -1,6 +1,5 @@
-"use client";
-import styled from "styled-components";
-import { css } from "styled-components";
+'use client';
+import styled, { css } from "styled-components";
 
 export const ContainerPagination = styled.div`
   display: flex;
@@ -10,7 +9,7 @@ export const ContainerPagination = styled.div`
   height: 100px;
 `;
 
-export const ButtonPagination = styled.button`
+export const ButtonPagination = styled.button<{ active: string | undefined }>`
   background-color: #fff;
   color: #2fe4ed;
   border: none;
@@ -27,5 +26,4 @@ export const ButtonPagination = styled.button`
       border: 4px solid #2fe4ed;
       font-weight: bold;
     `}
-  }
 `;

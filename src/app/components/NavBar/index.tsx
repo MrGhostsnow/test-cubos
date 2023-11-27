@@ -1,3 +1,4 @@
+import React from "react";
 import { ContainerNavBar, Title } from "./styles";
 import Link from "next/link";
 

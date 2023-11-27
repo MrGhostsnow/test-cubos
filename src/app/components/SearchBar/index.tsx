@@ -1,5 +1,5 @@
 import { ContainerSearchBar, InputSearch, Button } from "./styles";
-import { useState } from "react";
+import React, { useState } from "react";
 
 interface SearchBarProps {
   onSearch: (searchTerm: string) => void;

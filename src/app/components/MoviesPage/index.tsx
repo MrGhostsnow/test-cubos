@@ -1,10 +1,10 @@
 "use client";
-import SearchBar from "../SearchBar";
-import MovieCard from "../MovieCard";
+import React, { useEffect, useState } from "react";
 import { ContainerMoviesPage } from "./styles";
-import { useState, useEffect } from "react";
 import { IMovie } from "@/app/interfaces/MovieInterface";
 import Link from "next/link";
+import SearchBar from "../SearchBar";
+import MovieCard from "../MovieCard";
 import Pagination from "../Pagination";
 
 const MoviesPage: React.FC = () => {

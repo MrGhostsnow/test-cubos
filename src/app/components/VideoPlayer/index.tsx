@@ -1,3 +1,4 @@
+import React from "react";
 import { SectionVideoPlayer } from "./styles";
 
 interface VideoPlayerProps {

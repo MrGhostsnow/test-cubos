@@ -7,7 +7,7 @@ export interface IMovie {
     vote_average: number;
     overview: string;
     poster_path: string;
-    genre_ids: number[];
+    genre_ids?: number[];
     budget: number;
     original_language: string;
     revenue: number;

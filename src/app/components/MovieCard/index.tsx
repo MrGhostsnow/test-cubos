@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { transformForPercent } from "@/app/utils/transformForPercent";
 import { formatDate } from "@/app/utils/formatDate";
 import { limitDescription } from "@/app/utils/limitDescription";
@@ -67,7 +67,7 @@ export default function MovieCard({ movie }: { movie: IMovie }) {
           </SectionDescription>
           <SectionGenre>
             <MovieGenre>
-              {moviesGenre && moviesGenre.length > 0
+              {moviesGenre && movie.genre_ids && moviesGenre.length > 0
                 ? movie.genre_ids.map((genreId, index) => {
                     const genre = moviesGenre.find(
                       (item) => item.id === genreId
