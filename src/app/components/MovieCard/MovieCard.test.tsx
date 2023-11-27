@@ -1,5 +1,3 @@
-// MovieCard.test.jsx
-
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
@@ -38,12 +36,11 @@ describe("MovieCard component", () => {
   it("renders correctly", async () => {
     render(<MovieCard movie={mockMovie} />);
 
-    // Aguarde a resolução das promessas do useEffect
     await waitFor(() => {
       expect(screen.getByAltText(/Example Movie/i)).toBeInTheDocument();
       expect(screen.getByText(/Example Movie/i)).toBeInTheDocument();
       expect(screen.getByText(/75%/i)).toBeInTheDocument();
-      expect(screen.getByText(`31/12/2021`)).toBeInTheDocument(); // Ajuste a expectativa aqui
+      expect(screen.getByText(`31/12/2021`)).toBeInTheDocument();
       expect(
         screen.getByText(
           /Lorem ipsum dolor sit amet, consectetur adipiscing elit./i

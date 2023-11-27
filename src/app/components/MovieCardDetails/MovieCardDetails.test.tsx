@@ -1,11 +1,8 @@
-// MovieCardDetails.test.js
-
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import MovieCardDetails from "../MovieCardDetails/index";
 
-// Mock fetch para evitar chamadas reais à API
 global.fetch = jest.fn(() =>
   Promise.resolve({
     json: () => Promise.resolve({ results: [], total_results: 0 }),
