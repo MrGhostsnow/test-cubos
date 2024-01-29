@@ -68,7 +68,7 @@ export default function MovieCardDetails({ movie }: { movie: IMovie }) {
     )
       .then((response) => response.json())
       .then((data) => {
-        if (movie.genre_ids) {
+        if (movie) {
           setMovieVideos(data.results[0].key);
         }
       })
