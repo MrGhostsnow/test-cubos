@@ -1,11 +1,14 @@
 import React from "react";
 import { ContainerHome } from "./styles";
 import MoviesPage from "../MoviesPage";
+import { MoviesProvider } from "@/app/services/moviesContext";
 
 const HomePage = () => {
   return (
     <ContainerHome>
-      <MoviesPage />
+      <MoviesProvider>
+        <MoviesPage />
+      </MoviesProvider>
     </ContainerHome>
   );
 };

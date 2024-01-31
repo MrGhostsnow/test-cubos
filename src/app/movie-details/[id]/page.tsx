@@ -12,7 +12,7 @@ const MovieDetails: React.FC = () => {
 
   const [movieDetails, setMovieDetails] = useState<IMovie | null>();
   const [movieVideos, setMovieVideos] = useState<any[]>([]);
-  const apiKey = "b716e119325a7aeeeff2782636710df3";
+  const apiKey = process.env.NEXT_PUBLIC_REACT_APP_API_KEY;
 
   useEffect(() => {
     fetch(

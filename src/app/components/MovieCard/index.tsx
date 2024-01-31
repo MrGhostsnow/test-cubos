@@ -23,6 +23,7 @@ import {
 
 export default function MovieCard({ movie }: { movie: IMovie }) {
   const [moviesGenre, setMoviesGenre] = useState<any[]>([]);
+  const apiKey = process.env.NEXT_PUBLIC_REACT_APP_API_KEY;
 
   const options = {
     method: "GET",
@@ -35,7 +36,7 @@ export default function MovieCard({ movie }: { movie: IMovie }) {
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/genre/movie/list?api_key=b716e119325a7aeeeff2782636710df3&language=pt-BR",
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=pt-BR`,
       options
     )
       .then((response) => response.json())

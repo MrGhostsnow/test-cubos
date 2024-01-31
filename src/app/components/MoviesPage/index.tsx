@@ -6,24 +6,44 @@ import Link from "next/link";
 import SearchBar from "../SearchBar";
 import MovieCard from "../MovieCard";
 import Pagination from "../Pagination";
+import { useMovies } from "@/app/services/moviesContext";
 
 const MoviesPage: React.FC = () => {
-  const [movies, setMovies] = useState<IMovie[]>([]);
-  const [searchMovie, setSearchMovie] = useState("");
-  const [searchResult, setSearchResult] = useState<IMovie[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const apiKey = "b716e119325a7aeeeff2782636710df3";
+  const {
+    movies,
+    setMovies,
+    searchMovie,
+    setSearchMovie,
+    searchResult,
+    setSearchResult,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    setTotalPages,
+  } = useMovies();
+
+  const apiKey = process.env.NEXT_PUBLIC_REACT_APP_API_KEY;
   const moviesURL = "https://api.themoviedb.org/3/movie/";
   const maxPages = 4;
-
   const moviesPerPage = 5;
 
+  const [cachedPages, setCachedPages] = useState<{ [key: number]: IMovie[] }>(
+    {}
+  );
+
   const getMovies = async (moviesURL: string, page: number = 1) => {
+    if (cachedPages[page]) {
+      setMovies(cachedPages[page]);
+      return;
+    }
+
     const response = await fetch(
       `${moviesURL}popular?api_key=${apiKey}&language=pt-BR&page=${page}`
     );
     const data = await response.json();
+
+    setCachedPages((prevCache) => ({ ...prevCache, [page]: data.results }));
+
     setMovies(data.results);
     const totalMovies = data.total_results;
     const totalPageCount = Math.ceil(totalMovies / moviesPerPage);
@@ -49,7 +69,6 @@ const MoviesPage: React.FC = () => {
             movie.title.toLowerCase().includes(lowercaseSearch)
           );
           setSearchResult(filteredResults);
-          // setTotalPages(1);
         })
         .catch((err) => console.error(err));
     } else {
@@ -83,9 +102,18 @@ const MoviesPage: React.FC = () => {
             </Link>
           ))
         ) : (
-          <p>Nenhum resultado encontrado</p>
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "20px",
+              color: "#1f75cb",
+              fontWeight: "bold",
+            }}
+          >
+            Nenhum resultado encontrado
+          </p>
         )
-      ) : movies.length > 0 ? (
+      ) : movies && movies.length > 0 ? (
         movies.slice(startIndex, endIndex).map((movie) => (
           <Link
             key={movie.id}
@@ -100,7 +128,7 @@ const MoviesPage: React.FC = () => {
       ) : (
         <p>Carregando...</p>
       )}
-      {totalPages > 0 && (
+      {totalPages > 1 && (!searchMovie || searchResult.length > 0) && (
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}

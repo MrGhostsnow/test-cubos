@@ -39,7 +39,7 @@ import {
 export default function MovieCardDetails({ movie }: { movie: IMovie }) {
   const [moviesGenre, setMoviesGenre] = useState<any[]>([]);
   const [movieVideos, setMovieVideos] = useState<any[]>([]);
-  const apiKey = "b716e119325a7aeeeff2782636710df3";
+  const apiKey = process.env.NEXT_PUBLIC_REACT_APP_API_KEY;
 
   const options = {
     method: "GET",
@@ -52,7 +52,7 @@ export default function MovieCardDetails({ movie }: { movie: IMovie }) {
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/genre/movie/list?api_key=b716e119325a7aeeeff2782636710df3&language=pt-BR",
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=pt-BR`,
       options
     )
       .then((response) => response.json())
@@ -64,7 +64,7 @@ export default function MovieCardDetails({ movie }: { movie: IMovie }) {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US&api_key=${apiKey}`
+      `https://api.themoviedb.org/3/movie/${movie.id}/videos?language=pt-BR&api_key=${apiKey}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -76,6 +76,8 @@ export default function MovieCardDetails({ movie }: { movie: IMovie }) {
         console.log(error);
       });
   }, []);
+
+  console.log(movie);
 
   return (
     <ContainerMovieCard>
