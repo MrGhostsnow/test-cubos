@@ -2,15 +2,11 @@
 import styled from "styled-components";
 
 export const ContainerMovieCard = styled.div`
-  width: 1200px;
+  width: 220px;
   height: 330px;
-  margin-top: 20px;
-  display: flex;
   background-color: #ececef;
 
-  @media screen and (max-width: 1024px) {
-    width: 950px;
-  }
+  
 
   @media screen and (max-width: 768px) {
     width: 700px;
@@ -23,8 +19,8 @@ export const ContainerMovieCard = styled.div`
 `;
 
 export const MoviePoster = styled.img`
+  max-width: 235px;
   max-height: 330px;
-  width: 300px;
   color: #000;
   @media screen and (max-width: 480px) {
     display: none;
@@ -32,71 +28,68 @@ export const MoviePoster = styled.img`
 `;
 
 export const SectionInfos = styled.div`
+  position: relative;
+  top: -14.3rem;
   display: flex;
+  height: 230px;
+  max-width: 235px;
+  justify-content: space-between;
   flex-direction: column;
-  margin-top: -4.1rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1));
+  ${ContainerMovieCard}:hover & {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const SectionMovieAverage = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  color: #000;
-  top: 5.5rem;
-  left: 1.5rem;
-  border: 4px solid #2fe4ed;
-  border-radius: 50%;
-  width: 70px;
-  height: 100px;
-  background-color: #1f75cb;
-
-  @media screen and (max-width: 768px) {
-    left: 25rem;
-    top: 7rem;
-  }
-  @media screen and (max-width: 480px) {
-    left: 18rem;
+  ${ContainerMovieCard}:hover & {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: #000;
+    top: 0.5rem;
+    left: 3.5rem;
+    border: 4px solid rgba(255, 224, 0, 1);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 `;
 
 export const MovieAverage = styled.p`
-  color: #2fe4ed;
-  font-size: 25px;
+  display: none;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+
+  ${ContainerMovieCard}:hover & {
+    display: block;
+    color: rgba(255, 224, 0, 1);
+    font-size: 25px;
+  }
+  
 `;
 
 export const SectionTitle = styled.div`
-  display: flex;
-  align-items: center;
-  background-color: #1f75cb;
-  height: 80px;
-  width: 980px;
-  @media screen and (max-width: 1024px) {
-    width: 730px;
-  }
-  @media screen and (max-width: 768px) {
-    width: 480px;
-  }
-  @media screen and (max-width: 480px) {
-    width: 400px;
+  position: relative;
+
+  &:hover .movie-title {
+    opacity: 1;
   }
 `;
 
-export const MovieTitle = styled.h1`
-  color: #2fe4ed;
-  font-size: 35px;
-  margin-left: 7rem;
-
-  @media screen and (max-width: 768px) {
-    margin-left: 1rem;
-  }
+export const MovieTitle = styled.h3`
+  margin: 0;
+  padding: 0.5rem;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 export const SectionTextMovie = styled.div`
+  border: 1px solid red;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
 `;
 
 export const SectionDescription = styled.div`
@@ -128,30 +121,52 @@ export const MovieYear = styled.p`
   }
 `;
 
-export const SectionGenre = styled.div`
+// export const SectionGenre = styled.div`
+//   &>a{
+//     border: 1px solid red;
+//   }
+//   &:hover {
+//   display: flex;
+//   align-items: center;
+//   height: 10%;
+//   width: 100%;
+//   margin-left: 1rem;
+//   }
+//   border: 1px solid red;
+  
+// `;
+
+export const MovieGenreContainer = styled.div`
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+
+  ${ContainerMovieCard}:hover & {
+    height: auto; 
+  }
+`;
+
+export const MovieGenre = styled.div`
+  opacity: 0;
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  margin-left: 7rem;
-  height: 10%;
-  width: 70%;
-  margin-bottom: 2rem;
-  @media screen and (max-width: 768px) {
-    margin-left: 1rem;
-  }
-  @media screen and (max-width: 480px) {
-    width: 380px;
+  max-height: 90px;
+  transition: opacity 0.3s ease-in-out;
+  margin-top: -3.5rem;
+
+  ${ContainerMovieCard}:hover & {
+    opacity: 1;
+    margin-top: 0;
   }
 `;
 
-export const MovieGenre = styled.p`
-  color: #000;
-`;
 
-export const Genre = styled.span`
-  background-color: #fff;
-  color: #1f75cb;
-  border: 1px solid #1f75cb;
-  padding: 4px;
-  margin-right: 5px;
-  border-radius: 12px;
+export const Genre = styled.p`
+  width: 53px;
+  height: 16px;
+  font-weight: 400;
+  font-size: 12.8px;
+  line-height: 15.6px;
+  color: #B4B4B4; 
+  
 `;

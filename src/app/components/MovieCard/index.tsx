@@ -16,10 +16,11 @@ import {
   SectionTextMovie,
   SectionDescription,
   MovieDescription,
-  SectionGenre,
   MovieGenre,
   Genre,
+  MovieGenreContainer,
 } from "./styles";
+import Circle from "../ProgressBar";
 
 export default function MovieCard({ movie }: { movie: IMovie }) {
   const [moviesGenre, setMoviesGenre] = useState<any[]>([]);
@@ -49,42 +50,33 @@ export default function MovieCard({ movie }: { movie: IMovie }) {
   return (
     <ContainerMovieCard>
       <MoviePoster
-        src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+        src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
         alt={movie.title}
       />
       <SectionInfos>
         <SectionMovieAverage>
-          <MovieAverage>{transformForPercent(movie.vote_average)}</MovieAverage>
+          <MovieAverage>
+            {transformForPercent(movie.vote_average)}
+            <span style={{ color: "#fff" }}>%</span>
+          </MovieAverage>
         </SectionMovieAverage>
-        <SectionTitle>
-          <MovieTitle>{limitDescription(movie.title, 30)}</MovieTitle>
-        </SectionTitle>
-        <MovieYear>{formatDate(movie.release_date)}</MovieYear>
-        <SectionTextMovie>
-          <SectionDescription>
-            <MovieDescription>
-              {limitDescription(movie.overview, 250)}
-            </MovieDescription>
-          </SectionDescription>
-          <SectionGenre>
-            <MovieGenre>
-              {moviesGenre && movie.genre_ids && moviesGenre.length > 0
-                ? movie.genre_ids.map((genreId, index) => {
-                    const genre = moviesGenre.find(
-                      (item) => item.id === genreId
-                    );
-                    const genreName = genre ? genre.name : "Desconhecido";
+        <MovieTitle>{limitDescription(movie.title, 30)}</MovieTitle>
+        <MovieGenreContainer>
+          <MovieGenre>
+            {moviesGenre && movie.genre_ids && moviesGenre.length > 0
+              ? movie.genre_ids.slice(0, 2).map((genreId, index) => {
+                  const genre = moviesGenre.find((item) => item.id === genreId);
+                  const genreName = genre ? genre.name : "Desconhecido";
 
-                    return (
-                      <Genre key={index} className="genre">
-                        {genreName}
-                      </Genre>
-                    );
-                  })
-                : "Carregando..."}
-            </MovieGenre>
-          </SectionGenre>
-        </SectionTextMovie>
+                  return (
+                    <Genre key={index} className="genre">
+                      {genreName}
+                    </Genre>
+                  );
+                })
+              : "Carregando..."}
+          </MovieGenre>
+        </MovieGenreContainer>
       </SectionInfos>
     </ContainerMovieCard>
   );

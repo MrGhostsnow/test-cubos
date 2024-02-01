@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const ContainerSearchBar = styled.div`
   margin-top: 5rem;
   height: 100px;
+ 
 
   @media screen and (max-width: 768px) {
     display: flex;
@@ -16,16 +17,17 @@ export const ContainerSearchBar = styled.div`
 `;
 
 export const InputSearch = styled.input`
-  width: 550px;
-  height: 50px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: #fff;
+  width: 480px;
+  height: 56px;
+  border-radius: 4px;
+  border: 1px solid #49474E;
   color: #1f75cb;
-  padding-left: 10px;
+  padding: 16px;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
   &:focus {
     outline: none;
-    border-color: #1f75cb;
   }
   @media screen and (max-width: 768px) {
     width: 100%;
@@ -34,16 +36,11 @@ export const InputSearch = styled.input`
 `;
 
 export const Button = styled.button`
-  width: 100px;
-  height: 50px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  color: #1f75cb;
+  position: relative;
+  right: 45px;
+  top: 6px;
+  background-color: transparent;
+  border: none;
   cursor: pointer;
-  &:hover {
-    background-color: #1f75cb;
-    color: #fff;
-  }
   margin-left: 10px;
 `;

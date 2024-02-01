@@ -1,5 +1,7 @@
-import { ContainerSearchBar, InputSearch, Button } from "./styles";
 import React, { useState } from "react";
+import { ContainerSearchBar, InputSearch, Button } from "./styles";
+import Loupe from "../../assets/loupe.png";
+import Image from "next/image";
 
 interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
@@ -21,11 +23,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     <ContainerSearchBar>
       <InputSearch
         type="text"
-        placeholder="Busque um filme por nome, ano ou gênero..."
+        placeholder="Pesquise por filmes"
         value={searchTerm}
         onChange={handleInputChange}
       />
-      <Button onClick={handleSearch}>Pesquisar</Button>
+      <Button onClick={handleSearch}>
+        {" "}
+        <Image src={Loupe} alt="loupe" />
+      </Button>
     </ContainerSearchBar>
   );
 };

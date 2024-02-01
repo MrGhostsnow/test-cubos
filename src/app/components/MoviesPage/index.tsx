@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { ContainerMoviesPage } from "./styles";
+import { ContainerMoviesPage, SectionMovies } from "./styles";
 import { IMovie } from "@/app/interfaces/MovieInterface";
 import Link from "next/link";
 import SearchBar from "../SearchBar";
@@ -25,7 +25,7 @@ const MoviesPage: React.FC = () => {
   const apiKey = process.env.NEXT_PUBLIC_REACT_APP_API_KEY;
   const moviesURL = "https://api.themoviedb.org/3/movie/";
   const maxPages = 4;
-  const moviesPerPage = 5;
+  const moviesPerPage = 10;
 
   const [cachedPages, setCachedPages] = useState<{ [key: number]: IMovie[] }>(
     {}
@@ -88,10 +88,37 @@ const MoviesPage: React.FC = () => {
   return (
     <ContainerMoviesPage>
       <SearchBar onSearch={handleSearch} />
-      {searchMovie ? (
-        searchResult.length > 0 ? (
-          searchResult.slice(startIndex, endIndex).map((movie) => (
+      <SectionMovies>
+        {searchMovie ? (
+          searchResult.length > 0 ? (
+            searchResult.slice(startIndex, endIndex).map((movie) => (
+              <Link
+                style={{ display: "flex", justifyContent: "center" }}
+                key={movie.id}
+                href={{
+                  pathname: `/movie-details/${movie.id}`,
+                  query: { id: movie.id },
+                }}
+              >
+                <MovieCard movie={movie} />
+              </Link>
+            ))
+          ) : (
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: "20px",
+                color: "#1f75cb",
+                fontWeight: "bold",
+              }}
+            >
+              Nenhum resultado encontrado
+            </p>
+          )
+        ) : movies && movies.length > 0 ? (
+          movies.slice(startIndex, endIndex).map((movie) => (
             <Link
+              style={{ display: "flex", justifyContent: "center" }}
               key={movie.id}
               href={{
                 pathname: `/movie-details/${movie.id}`,
@@ -102,32 +129,9 @@ const MoviesPage: React.FC = () => {
             </Link>
           ))
         ) : (
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: "20px",
-              color: "#1f75cb",
-              fontWeight: "bold",
-            }}
-          >
-            Nenhum resultado encontrado
-          </p>
-        )
-      ) : movies && movies.length > 0 ? (
-        movies.slice(startIndex, endIndex).map((movie) => (
-          <Link
-            key={movie.id}
-            href={{
-              pathname: `/movie-details/${movie.id}`,
-              query: { id: movie.id },
-            }}
-          >
-            <MovieCard movie={movie} />
-          </Link>
-        ))
-      ) : (
-        <p>Carregando...</p>
-      )}
+          <p>Carregando...</p>
+        )}
+      </SectionMovies>
       {totalPages > 1 && (!searchMovie || searchResult.length > 0) && (
         <Pagination
           currentPage={currentPage}
