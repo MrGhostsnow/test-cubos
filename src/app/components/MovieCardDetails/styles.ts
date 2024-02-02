@@ -2,293 +2,387 @@
 import styled from "styled-components";
 
 export const ContainerMovieCard = styled.div`
-  width: 1200px;
-  margin-top: 20px;
+  border: 1px solid red;
+  display: flex;
+  width: 1500px;
+  height: 606px;
+  margin-top: -35rem;
+  gap: 2rem;
+`;
+export const  MoviePoster = styled.img``;	
+export const  ContainerInfos = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  width: 500px;
+`;
+export const  SectionTitles = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 226px;
+  height: 158px;
+  justify-content: space-between;
+  margin-top: -1rem;
+`;
+export const  MovieTitle = styled.h3`
+  width: 213px;
+  height: 39px;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+`;
+export const  MovieOriginalTitle = styled.p`
+  width: 212px;
+  height: 20px;
+  top: 39px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.5px;
+  color: #B5B2BC;
+`;
+export const  MovieCatchFrase = styled.p`
+  width: 226px;
+  height: 20px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.5px;
+  font-style: italic;
+  color: #EEEEF0;
+`;
+export const  SectionDescription = styled.div`
+  width: 417.75px;
+  height: 300px;
+  border-radius: 4px;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgba(35, 34, 37, 0.6);
+`;
+export const  ContainerTitle = styled.div`
+  width: 75px;
+  height: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19.5px;
+  color:#B5B2BC;
+`;
+export const  MovieDescription = styled.p`
+  width: 385.75px;
+  height: 240px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.5px;
+  color: #EEEEF0;
+`;
+export const  SectionGenre = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 325px;
+  height: 88px;
+  border-radius: 4px;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgba(35, 34, 37, 0.6);
+`;
+
+export const Genres = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+export const  MovieGenre = styled.div`
+  display: flex;
   justify-content: center;
-  align-items: center;
-  @media screen and (max-width: 1024px) {
-    flex-direction: column;
-    height: 1000px;
-    width: 900px;
-    margin-top: 80px;
-  }
-  @media screen and (max-width: 768px) {
-    width: 700px;
-  }
-  @media screen and (max-width: 480px) {
-    width: 400px;
-    justify-content: space-between;
-    height: 1900px;
-  }
+  width: 100%;
+  height: 31px;
+  border-radius: 2px;
+  padding: 8px;
+  gap: 8px;
+  background-color: rgba(193, 80, 255, 0.18);
 `;
+export const Genre = styled.p`
+  height: 15px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14.63px;
+  color: rgba(236, 217, 250, 1);
 
-export const ContainerInfos = styled.div`
-  display: flex;
-  @media screen and (max-width: 1024px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 80px;
-    height: 1200px;
-  }
-  @media screen and (max-width: 480px) {
-    width: 400px;
-
-    height: 1900px;
-  }
 `;
-
-export const MoviePoster = styled.img`
-  max-height: 500px;
-  width: 350px;
-  color: #000;
-  margin-top: -2rem;
-  @media screen and (max-width: 1024px) {
-    width: 280px;
-    height: 350px;
-    margin-bottom: 2rem;
-  }
-  @media screen and (max-width: 480px) {
-    margin-bottom: -5rem;
-    margin-top: 2rem;
-  }
-`;
-
-export const SectionInfos = styled.div`
+export const ContainerMoreInfos = styled.div`
+  width: 500px;
   display: flex;
   flex-direction: column;
-  margin-top: -4.1rem;
-  @media screen and (max-width: 1024px) {
-    height: 880px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  @media screen and (max-width: 480px) {
-    height: 800px;
-  }
+  gap: 5rem;
 `;
-
+export const  SectionVotes = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5rem;
+  width: 500px;
+  height: 110px;
+`;
+export const  MoviePopularity = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 116px;
+  height: 69px;
+  border-radius: 4px;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgba(35, 34, 37, 0.75);
+`;
+export const PopularityTitle = styled.p`
+  width: 104px;
+  height: 15px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14.63px;
+  color: rgba(181, 178, 188, 1);
+`;
+export const  Popularity = styled.p`
+  width: 104px;
+  height: 14px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  color: rgba(255, 255, 255, 1);
+`;
+export const  MovieVotes = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 69px;
+  border-radius: 4px;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgba(35, 34, 37, 0.75);
+`;
+export const  VotesTitle = styled.p`
+  width: 44px;
+  height: 15px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14.63px;
+  color: rgba(181, 178, 188, 1);
+`;
+export const  Votes = styled.p`
+  width: 44px;
+  height: 14px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  color: rgba(255, 255, 255, 1);
+`;
 export const SectionMovieAverage = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  color: #000;
-  top: -2rem;
-  left: 52rem;
-  border: 4px solid #2fe4ed;
-  border-radius: 50%;
-  width: 105px;
-  height: 130px;
-  background-color: #1f75cb;
-  @media screen and (max-width: 1024px) {
-    left: 26rem;
-  }
-  @media screen and (max-width: 768px) {
-    left: 20rem;
-  }
-  @media screen and (max-width: 480px) {
-    left: 7rem;
-    top: 1rem;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: #000;
+    top: 0.1rem;
+    left: 0.5rem;
+    border: 4px solid rgba(255, 224, 0, 1);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const MovieAverage = styled.p`
-  color: #2fe4ed;
-  font-size: 35px;
+    display: block;
+    color: rgba(255, 224, 0, 1);
+    font-size: 25px;  
 `;
-
-export const SectionTitle = styled.div`
+export const  SectionGeneralInfos = styled.div`
+  width: 500px;
+  height: 247px;
   display: flex;
-  align-items: center;
-  height: 100px;
-  width: 990px;
-  @media screen and (max-width: 768px) {
-    width: 700px;
-    justify-content: center;
-  }
-  @media screen and (max-width: 480px) {
-    width: 400px;
-  }
-`;
-
-export const MovieTitle = styled.h1`
-  color: #1f75cb;
-  font-size: 35px;
-  margin-left: 9rem;
-  @media screen and (max-width: 768px) {
-    margin-left: 0rem;
-  }
-`;
-
-export const SectionTextMovie = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-  @media screen and (max-width: 768px) {
-    width: 750px;
-  }
-  @media screen and (max-width: 480px) {
-    width: 400px;
-  }
-`;
-
-export const SectionDescription = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  height: 100%;
-  @media screen and (max-width: 768px) {
-    width: 700px;
-  }
-  @media screen and (max-width: 480px) {
-    width: 400px;
-  }
-`;
-
-export const MovieDescription = styled.p`
-  color: #000;
-  width: 70%;
-  border-top: 1px solid #2fe4ed;
-  padding-top: 1rem;
-  text-align: left;
-`;
-
-export const MovieYear = styled.p`
-  color: #000;
-  position: relative;
-  right: -15rem;
-  top: -2rem;
-  width: 100px;
-  @media screen and (max-width: 480px) {
-    right: -12.5rem;
-    top: 2rem;
-  }
-`;
-
-export const SectionGenre = styled.div`
-  display: flex;
   align-items: center;
-  justify-content: start;
-  margin-left: 9rem;
-  height: 50%;
-  width: 70%;
-  margin-top: 3rem;
-  @media screen and (max-width: 480px) {
-    width: 300px;
-    justify-content: center;
-    margin-left: 3.5rem;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-  }
-`;
-
-export const MovieGenre = styled.p`
-  color: #000;
-`;
-
-export const Genre = styled.span`
-  background-color: #fff;
-  color: #1f75cb;
-  border: 1px solid #1f75cb;
-  padding: 4px;
-  margin-right: 5px;
-  border-radius: 12px;
-  margin-bottom: -1rem;
-`;
-
-export const ContainerTitle = styled.p`
-  color: #1f75cb;
-  font-size: 30px;
-  text-align: left;
-  margin-bottom: 1rem;
-  @media screen and (max-width: 768px) {
-    margin-bottom: 0.5rem;
-  }
-`;
-
-export const SectionMoreInfos = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: left;
-  margin-top: 1.5rem;
-  @media screen and (max-width: 768px) {
-    width: 700px;
-  }
-  @media screen and (max-width: 480px) {
-    width: 400px;
-    flex-wrap: wrap;
-  }
+  gap: 1rem;
 `;
 
 export const SectionMovieInfos = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  border-top: 1px solid #2fe4ed;
-  width: 70%;
-  text-align: left;
-  @media screen and (max-width: 480px) {
-    justify-content: space-between;
-    padding: 0.5rem;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 420px;
+  height: 160px;
 `;
-
-export const SectionLabelInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
-  text-align: left;
-  @media screen and (max-width: 768px) {
-    margin-top: 0.5rem;
-  }
+export const  SectionLaunch = styled.div`
+  width: 200px;
+  height: 72px;
+  border-radius: 4px;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgba(35, 34, 37, 0.75);
 `;
-
-export const TitleMoreInfos = styled.p`
-  color: #1f75cb;
-  font-size: 30px;
-  text-align: left;
-  margin-bottom: 0.5rem;
-  text-align: left;
+export const  LaunchTitle = styled.p`
+  width: 91px;
+  height: 15px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14.63px;
+  color: rgba(181, 178, 188, 1);
 `;
-
-export const MovieStatus = styled.p`
-  color: #000;
+export const  Launch = styled.p`
+  width: 168px;
+  height: 17px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.07px;
+  color: rgba(238, 238, 240, 1);
 `;
-
-export const MovieRuntime = styled.p`
-  color: #000;
+export const SectionRuntime = styled.div`
+  width: 200px;
+  height: 72px;
+  border-radius: 4px;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgba(35, 34, 37, 0.75);
 `;
-
-export const MovieBudget = styled.p`
-  color: #000;
+export const RuntimeTitle = styled.p`
+  width: 91px;
+  height: 15px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14.63px;
+  color: rgba(181, 178, 188, 1);
 `;
-
-export const MovieLanguage = styled.p`
-  color: #000;
+export const Runtime = styled.p`
+  width: 168px;
+  height: 17px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.07px;
+  color: rgba(238, 238, 240, 1);
 `;
-
-export const MovieRevenue = styled.p`
-  color: #000;
-  font-size: 15px;
-`;
-
-export const Label = styled.p`
-  color: #1f75cb;
-  font-size: 18px;
-`;
-
-export const SectionPosterAndDate = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+export const SectionStatus  = styled.div`
+  width: 200px;
+  height: 72px;
+  border-radius: 4px;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgba(35, 34, 37, 0.75);
+  `;
+export const  StatusTitle = styled.p`
+  width: 91px;
+  height: 15px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14.63px;
+  color: rgba(181, 178, 188, 1);
+  `;
+export const Status = styled.p`
+  width: 168px;
+  height: 17px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.07px;
+  color: rgba(238, 238, 240, 1);
+  `;
+export const SectionOriginalLanguage = styled.div`
+  width: 200px;
+  height: 72px;
+  border-radius: 4px;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgba(35, 34, 37, 0.75);
+  `;
+export const  OriginalLanguageTitle = styled.p`
+  width: 91px;
+  height: 15px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14.63px;
+  color: rgba(181, 178, 188, 1);
+  `;
+export const OriginalLanguage = styled.p`
+  width: 168px;
+  height: 17px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.07px;
+  color: rgba(238, 238, 240, 1);
+  `;
+export const SectionMoney = styled.div`
+    display: flex;
+    width: 420px;
+    height: 72px;
+    gap: 16px;
+  `;
+export const SectionBudget = styled.div`
+  width: 128.58px ;
+  height: 72px;
+  border-radius: 4px;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgba(35, 34, 37, 0.75);
+  `;
+export const BudgetTitle = styled.p`
+  width: 84px;
+  height: 15px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14.63px;
+  color: rgba(181, 178, 188, 1);
+  `;
+export const Budget = styled.p`
+  width: 96.58px;
+  height: 17px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.07px;
+  color: rgba(238, 238, 240, 1);
+  `;
+export const  SectionRevenue = styled.div`
+  width: 128.58px ;
+  height: 72px;
+  border-radius: 4px;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgba(35, 34, 37, 0.75);
+  `;
+export const  RevenueTitle = styled.p`
+  width: 84px;
+  height: 15px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14.63px;
+  color: rgba(181, 178, 188, 1);
+  `;
+export const Revenue = styled.p`
+  width: 96.58px;
+  height: 17px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.07px;
+  color: rgba(238, 238, 240, 1);
+  `;
+export const SectionProfit = styled.div`
+  width: 128.58px ;
+  height: 72px;
+  border-radius: 4px;
+  padding: 16px;
+  gap: 8px;
+  background-color: rgba(35, 34, 37, 0.75);
+  `;
+export const ProfitTitle = styled.p`
+  width: 84px;
+  height: 15px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14.63px;
+  color: rgba(181, 178, 188, 1);
+  `;
+export const  Profit = styled.p`
+  width: 96.58px;
+  height: 17px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.07px;
+  color: rgba(238, 238, 240, 1);
+  `;

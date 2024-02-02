@@ -7,7 +7,7 @@ export const ContainerMain = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: white;
+  background-color: #121113;
 `;
 
 export const ContainerNavBar = styled.div`

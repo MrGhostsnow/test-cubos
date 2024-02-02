@@ -9,6 +9,7 @@ export const ContainerMovieDetails = styled.div`
   width: 100%;
   height: 1400px;
   margin-bottom: 10rem;
+  background-color: #121113;
 `;
 
 export const ContainerCard = styled.div`
