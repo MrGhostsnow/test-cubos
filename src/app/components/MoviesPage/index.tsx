@@ -32,6 +32,7 @@ const MoviesPage: React.FC = () => {
   );
 
   const getMovies = async (moviesURL: string, page: number = 1) => {
+    console.log("Fetching movies for page:", page);
     if (cachedPages[page]) {
       setMovies(cachedPages[page]);
       return;
@@ -100,7 +101,7 @@ const MoviesPage: React.FC = () => {
                   query: { id: movie.id },
                 }}
               >
-                <MovieCard movie={movie} />
+                <MovieCard hasPoster movie={movie} />
               </Link>
             ))
           ) : (
@@ -125,7 +126,7 @@ const MoviesPage: React.FC = () => {
                 query: { id: movie.id },
               }}
             >
-              <MovieCard movie={movie} />
+              <MovieCard hasPoster movie={movie} />
             </Link>
           ))
         ) : (

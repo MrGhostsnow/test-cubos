@@ -1,38 +1,74 @@
 "use client";
 import styled from "styled-components";
 
+
 export const ContainerMovieCard = styled.div`
-  border: 1px solid red;
-  display: flex;
-  width: 1500px;
-  height: 606px;
+  display: flex; 
+  background-size: cover;
+  background-position: center;
+  transition: background 0.5s ease; 
+  position: relative;
   margin-top: -35rem;
-  gap: 2rem;
+
+  &::before {
+    content: ""; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(18, 17, 19, 0.6),
+      rgba(18, 17, 19, 0.8),
+      rgba(18, 17, 19, 0)
+    );
+  }
 `;
-export const  MoviePoster = styled.img``;	
+
+export const ContainerCardInfos = styled.div`
+  z-index: 1; 
+  display: flex;
+  flex-direction: row; 
+  align-items: center; 
+  display: flex;
+  flex-wrap: wrap;
+  width: 1530px;
+  height: 600px;
+  gap: 3rem;
+  font-family: "Montserrat", sans-serif;
+`;
+export const  MoviePoster = styled.img`
+  width: 350px;
+  height: 542px;
+  border-radius: 4px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  margin-left: 2rem;
+  `;	
 export const  ContainerInfos = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   width: 500px;
+  height: 606px;
 `;
 export const  SectionTitles = styled.div`
   display: flex;
   flex-direction: column;
-  width: 226px;
-  height: 158px;
+  width: 466px;
+  height: 138px;
   justify-content: space-between;
-  margin-top: -1rem;
+  margin-top: 1.0rem;
 `;
 export const  MovieTitle = styled.h3`
-  width: 213px;
-  height: 39px;
+  width: 443px;
+  height: 69px;
   font-weight: 600;
   font-size: 32px;
   line-height: 39px;
 `;
 export const  MovieOriginalTitle = styled.p`
-  width: 212px;
+  width: 312px;
   height: 20px;
   top: 39px;
   font-weight: 400;
@@ -77,7 +113,7 @@ export const  SectionGenre = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 325px;
+  width: 355px;
   height: 88px;
   border-radius: 4px;
   padding: 16px;
@@ -88,6 +124,7 @@ export const  SectionGenre = styled.div`
 export const Genres = styled.div`
   display: flex;
   gap: 8px;
+  width: 100%;
 `;
 export const  MovieGenre = styled.div`
   display: flex;
@@ -109,6 +146,7 @@ export const Genre = styled.p`
 `;
 export const ContainerMoreInfos = styled.div`
   width: 500px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   gap: 5rem;
@@ -117,14 +155,14 @@ export const  SectionVotes = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 5rem;
+  gap: 2rem;
   width: 500px;
   height: 110px;
 `;
 export const  MoviePopularity = styled.div`
   display: flex;
   flex-direction: column;
-  width: 116px;
+  width: 126px;
   height: 69px;
   border-radius: 4px;
   padding: 16px;
@@ -217,7 +255,7 @@ export const  SectionLaunch = styled.div`
   height: 72px;
   border-radius: 4px;
   padding: 16px;
-  gap: 8px;
+  gap: 10px;
   background-color: rgba(35, 34, 37, 0.75);
 `;
 export const  LaunchTitle = styled.p`
@@ -225,7 +263,7 @@ export const  LaunchTitle = styled.p`
   height: 15px;
   font-weight: 700;
   font-size: 12px;
-  line-height: 14.63px;
+  line-height: 12.63px;
   color: rgba(181, 178, 188, 1);
 `;
 export const  Launch = styled.p`
@@ -241,7 +279,7 @@ export const SectionRuntime = styled.div`
   height: 72px;
   border-radius: 4px;
   padding: 16px;
-  gap: 8px;
+  gap: 10px;
   background-color: rgba(35, 34, 37, 0.75);
 `;
 export const RuntimeTitle = styled.p`
@@ -249,7 +287,7 @@ export const RuntimeTitle = styled.p`
   height: 15px;
   font-weight: 700;
   font-size: 12px;
-  line-height: 14.63px;
+  line-height: 12.63px;
   color: rgba(181, 178, 188, 1);
 `;
 export const Runtime = styled.p`
@@ -265,7 +303,7 @@ export const SectionStatus  = styled.div`
   height: 72px;
   border-radius: 4px;
   padding: 16px;
-  gap: 8px;
+  gap: 10px;
   background-color: rgba(35, 34, 37, 0.75);
   `;
 export const  StatusTitle = styled.p`
@@ -273,7 +311,7 @@ export const  StatusTitle = styled.p`
   height: 15px;
   font-weight: 700;
   font-size: 12px;
-  line-height: 14.63px;
+  line-height: 12.63px;
   color: rgba(181, 178, 188, 1);
   `;
 export const Status = styled.p`
@@ -289,7 +327,7 @@ export const SectionOriginalLanguage = styled.div`
   height: 72px;
   border-radius: 4px;
   padding: 16px;
-  gap: 8px;
+  gap: 10px;
   background-color: rgba(35, 34, 37, 0.75);
   `;
 export const  OriginalLanguageTitle = styled.p`
@@ -297,7 +335,7 @@ export const  OriginalLanguageTitle = styled.p`
   height: 15px;
   font-weight: 700;
   font-size: 12px;
-  line-height: 14.63px;
+  line-height: 12.63px;
   color: rgba(181, 178, 188, 1);
   `;
 export const OriginalLanguage = styled.p`
@@ -315,7 +353,7 @@ export const SectionMoney = styled.div`
     gap: 16px;
   `;
 export const SectionBudget = styled.div`
-  width: 128.58px ;
+  width: 138.58px ;
   height: 72px;
   border-radius: 4px;
   padding: 16px;
@@ -327,11 +365,11 @@ export const BudgetTitle = styled.p`
   height: 15px;
   font-weight: 700;
   font-size: 12px;
-  line-height: 14.63px;
+  line-height: 12.63px;
   color: rgba(181, 178, 188, 1);
   `;
 export const Budget = styled.p`
-  width: 96.58px;
+  width: 106.58px;
   height: 17px;
   font-weight: 700;
   font-size: 14px;
@@ -339,7 +377,7 @@ export const Budget = styled.p`
   color: rgba(238, 238, 240, 1);
   `;
 export const  SectionRevenue = styled.div`
-  width: 128.58px ;
+  width: 138.58px ;
   height: 72px;
   border-radius: 4px;
   padding: 16px;
@@ -351,11 +389,11 @@ export const  RevenueTitle = styled.p`
   height: 15px;
   font-weight: 700;
   font-size: 12px;
-  line-height: 14.63px;
+  line-height: 12.63px;
   color: rgba(181, 178, 188, 1);
   `;
 export const Revenue = styled.p`
-  width: 96.58px;
+  width: 106.58px;
   height: 17px;
   font-weight: 700;
   font-size: 14px;
@@ -363,7 +401,7 @@ export const Revenue = styled.p`
   color: rgba(238, 238, 240, 1);
   `;
 export const SectionProfit = styled.div`
-  width: 128.58px ;
+  width: 138.58px ;
   height: 72px;
   border-radius: 4px;
   padding: 16px;
@@ -375,11 +413,11 @@ export const ProfitTitle = styled.p`
   height: 15px;
   font-weight: 700;
   font-size: 12px;
-  line-height: 14.63px;
+  line-height: 12.63px;
   color: rgba(181, 178, 188, 1);
   `;
 export const  Profit = styled.p`
-  width: 96.58px;
+  width: 106.58px;
   height: 17px;
   font-weight: 700;
   font-size: 14px;

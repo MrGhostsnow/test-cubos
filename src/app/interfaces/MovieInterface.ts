@@ -14,5 +14,11 @@ export interface IMovie {
     runtime: number;
     status: string;
     genres: IGenre[];
+    backdrop_path?: string;
+    original_title?: string;
+    tagline?: string;
+    popularity?: number;
+    vote_count?: number;
+    hasPoster?: boolean;
   }
 

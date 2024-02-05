@@ -22,7 +22,11 @@ import {
 } from "./styles";
 import Circle from "../ProgressBar";
 
-export default function MovieCard({ movie }: { movie: IMovie }) {
+interface MovieCardProps {
+  movie: IMovie;
+  hasPoster: boolean; // Adicione a propriedade hasPoster ao tipo das props
+}
+export default function MovieCard({ movie, hasPoster }: MovieCardProps) {
   const [moviesGenre, setMoviesGenre] = useState<any[]>([]);
   const apiKey = process.env.NEXT_PUBLIC_REACT_APP_API_KEY;
 
@@ -47,13 +51,19 @@ export default function MovieCard({ movie }: { movie: IMovie }) {
       .catch((err) => console.error(err));
   }, []);
 
+  console.log(movie);
+
   return (
     <ContainerMovieCard>
-      <MoviePoster
-        src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
-        alt={movie.title}
-      />
-      <SectionInfos>
+      {movie.poster_path ? (
+        <MoviePoster
+          src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
+          alt={movie.title}
+        />
+      ) : (
+        <div>No poster available</div>
+      )}
+      <SectionInfos hasPoster={movie.poster_path !== null}>
         <SectionMovieAverage>
           <MovieAverage>
             {transformForPercent(movie.vote_average)}

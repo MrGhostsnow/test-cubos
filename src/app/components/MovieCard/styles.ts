@@ -1,10 +1,15 @@
 "use client";
-import styled from "styled-components";
+import styled, { CSSProperties } from 'styled-components';
+
+interface SectionInfosProps {
+  hasPoster: boolean;
+}
 
 export const ContainerMovieCard = styled.div`
   width: 220px;
   height: 330px;
   background-color: #ececef;
+  font-family: "Montserrat", sans-serif;
 
   
 
@@ -27,17 +32,23 @@ export const MoviePoster = styled.img`
   }
 `;
 
-export const SectionInfos = styled.div`
-  position: relative;
-  top: -14.3rem;
+export const SectionInfos = styled.div<SectionInfosProps>`
+  position: ${(props) => (props.hasPoster ? 'relative' : 'block')};
+  top: ${(props) => (props.hasPoster ? '-14.3rem' : '0')};
   display: flex;
-  height: 230px;
+  height: ${(props) => (props.hasPoster ? '230px' : '95%')};
   max-width: 235px;
   justify-content: space-between;
   flex-direction: column;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1));
   ${ContainerMovieCard}:hover & {
-    background-color: rgba(0, 0, 0, 0.2);
+    background: linear-gradient(
+      to bottom,
+      rgba(18, 17, 19, 0),
+      rgba(18, 17, 19, 0.8),
+      rgba(
+        18, 17, 19, 1)
+    );
   }
 `;
 
