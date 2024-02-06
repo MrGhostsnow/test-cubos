@@ -51,8 +51,6 @@ export default function MovieCard({ movie, hasPoster }: MovieCardProps) {
       .catch((err) => console.error(err));
   }, []);
 
-  console.log(movie);
-
   return (
     <ContainerMovieCard>
       {movie.poster_path ? (

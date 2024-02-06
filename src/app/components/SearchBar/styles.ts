@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const ContainerSearchBar = styled.div`
   margin-top: 5rem;
   height: 100px;
+  margin-left: 4rem;
  
 
   @media screen and (max-width: 768px) {

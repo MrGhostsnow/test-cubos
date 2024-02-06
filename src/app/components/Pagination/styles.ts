@@ -5,7 +5,7 @@ export const ContainerPagination = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 100%;
   height: 100px;
   padding: 24px;
   gap: 12px;
@@ -29,4 +29,17 @@ export const ButtonPagination = styled.button<{ active: string | undefined }>`
       border: 1px solid #323035;
       font-weight: 400;
     `}
+`;
+
+export const ButtonPaginationSet = styled.button`
+  background-color: #8E4EC6;
+  color: #EAE6FD;
+  border: none;
+  font-size: 16px;
+  padding: 12px 16px;
+  margin: 2px;
+  cursor: pointer;
+  border-radius: 4px;
+
+  
 `;

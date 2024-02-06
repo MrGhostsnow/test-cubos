@@ -101,15 +101,12 @@ export default function MovieCardDetails({ movie }: { movie: IMovie }) {
   }, []);
 
   useEffect(() => {
-    // Certifique-se de que 'movie.backdrop_path' contém a URL da imagem que você deseja usar
     if (movie.backdrop_path) {
       setBackgroundImage(
         `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
       );
     }
-  }, [movie.backdrop_path]); // Dependência para atualizar quando a URL da imagem de fundo mudar
-
-  console.log(movie);
+  }, [movie.backdrop_path]);
 
   return (
     <ContainerMovieCard style={{ backgroundImage: `url(${backgroundImage})` }}>

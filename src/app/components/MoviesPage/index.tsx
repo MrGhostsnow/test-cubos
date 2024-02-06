@@ -24,116 +24,80 @@ const MoviesPage: React.FC = () => {
 
   const apiKey = process.env.NEXT_PUBLIC_REACT_APP_API_KEY;
   const moviesURL = "https://api.themoviedb.org/3/movie/";
-  const maxPages = 4;
-  const moviesPerPage = 10;
+  const moviesPerPage = 20;
+  const [loading, setLoading] = useState(false);
 
-  const [cachedPages, setCachedPages] = useState<{ [key: number]: IMovie[] }>(
-    {}
-  );
+  const fetchMoviesByPage = async (page: number) => {
+    try {
+      setLoading(true);
 
-  const getMovies = async (moviesURL: string, page: number = 1) => {
-    console.log("Fetching movies for page:", page);
-    if (cachedPages[page]) {
-      setMovies(cachedPages[page]);
-      return;
+      let url = `${moviesURL}popular?api_key=${apiKey}&language=pt-BR&page=${page}`;
+
+      if (searchMovie) {
+        url = `https://api.themoviedb.org/3/search/movie?query=${searchMovie}&include_adult=false&language=pt-BR&page=${page}&api_key=${apiKey}`;
+      }
+
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (searchMovie) {
+        setSearchResult(data.results);
+        setTotalPages(data.total_pages);
+      } else {
+        setMovies(data.results);
+        setTotalPages(data.total_pages);
+      }
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+    } finally {
+      setLoading(false);
     }
-
-    const response = await fetch(
-      `${moviesURL}popular?api_key=${apiKey}&language=pt-BR&page=${page}`
-    );
-    const data = await response.json();
-
-    setCachedPages((prevCache) => ({ ...prevCache, [page]: data.results }));
-
-    setMovies(data.results);
-    const totalMovies = data.total_results;
-    const totalPageCount = Math.ceil(totalMovies / moviesPerPage);
-    setTotalPages(Math.min(totalPageCount, maxPages));
   };
 
   useEffect(() => {
-    getMovies(moviesURL);
-  }, []);
+    fetchMoviesByPage(currentPage);
+  }, [currentPage, searchMovie]);
 
   const handleSearch = (searchTerm: string) => {
     setSearchMovie(searchTerm);
+    setCurrentPage(1);
   };
-
-  useEffect(() => {
-    if (searchMovie) {
-      const searchMoviesURL = `https://api.themoviedb.org/3/search/movie?query=${searchMovie}&include_adult=false&language=pt-BR&page=${currentPage}&api_key=${apiKey}`;
-      fetch(searchMoviesURL)
-        .then((response) => response.json())
-        .then((data) => {
-          const lowercaseSearch = searchMovie.toLowerCase();
-          const filteredResults = data.results.filter((movie: IMovie) =>
-            movie.title.toLowerCase().includes(lowercaseSearch)
-          );
-          setSearchResult(filteredResults);
-        })
-        .catch((err) => console.error(err));
-    } else {
-      setSearchResult([]);
-      getMovies(moviesURL);
-    }
-  }, [searchMovie, currentPage]);
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    getMovies(moviesURL, pageNumber);
   };
-
-  const startIndex = (currentPage - 1) * moviesPerPage;
-  const endIndex = startIndex + moviesPerPage;
 
   return (
     <ContainerMoviesPage>
       <SearchBar onSearch={handleSearch} />
       <SectionMovies>
-        {searchMovie ? (
-          searchResult.length > 0 ? (
-            searchResult.slice(startIndex, endIndex).map((movie) => (
-              <Link
-                style={{ display: "flex", justifyContent: "center" }}
-                key={movie.id}
-                href={{
-                  pathname: `/movie-details/${movie.id}`,
-                  query: { id: movie.id },
-                }}
-              >
-                <MovieCard hasPoster movie={movie} />
-              </Link>
-            ))
-          ) : (
+        {(searchMovie ? searchResult : movies)?.map((movie: IMovie) => (
+          <Link
+            style={{ textDecoration: "none", width: "220px" }}
+            key={movie.id}
+            href={{
+              pathname: `/movie-details/${movie.id}`,
+              query: { id: movie.id },
+            }}
+          >
+            <MovieCard hasPoster movie={movie} />
+          </Link>
+        ))}
+        {!loading &&
+          (searchMovie ? searchResult?.length === 0 : movies?.length === 0) && (
             <p
               style={{
                 textAlign: "center",
                 fontSize: "20px",
-                color: "#1f75cb",
+                color: "#fff",
                 fontWeight: "bold",
               }}
             >
               Nenhum resultado encontrado
             </p>
-          )
-        ) : movies && movies.length > 0 ? (
-          movies.slice(startIndex, endIndex).map((movie) => (
-            <Link
-              style={{ display: "flex", justifyContent: "center" }}
-              key={movie.id}
-              href={{
-                pathname: `/movie-details/${movie.id}`,
-                query: { id: movie.id },
-              }}
-            >
-              <MovieCard hasPoster movie={movie} />
-            </Link>
-          ))
-        ) : (
-          <p>Carregando...</p>
-        )}
+          )}
       </SectionMovies>
-      {totalPages > 1 && (!searchMovie || searchResult.length > 0) && (
+      {totalPages > 1 && (
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}

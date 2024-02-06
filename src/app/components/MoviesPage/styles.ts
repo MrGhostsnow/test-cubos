@@ -10,7 +10,6 @@ export const ContainerMoviesPage = styled.div`
   height: 100%;
   margin-bottom: 10rem;
   padding-bottom: 10rem;
-  
 `;
 
 export const SectionMovies = styled.div`

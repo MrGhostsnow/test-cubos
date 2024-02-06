@@ -96,6 +96,7 @@ body {
 a {
   color: black;
   text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

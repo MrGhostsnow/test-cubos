@@ -8,6 +8,7 @@ height: 90px;
 align-items: center;
 border-bottom: 1px solid #F1E6FD;
 background-color: #121113;
+
 @media screen and (max-width: 480px) {
   margin-bottom: 12rem;
 }
@@ -19,4 +20,5 @@ font-size: 30px;
 font-weight: bold;
 cursor: pointer;
 margin-left: 1rem;
+font-family: "Montserrat", sans-serif;
 `;
