@@ -7,6 +7,7 @@ import { translateStatus } from "@/app/utils/translateStatus";
 import { IMovie } from "@/app/interfaces/MovieInterface";
 import VideoPlayer from "@/app/components/VideoPlayer";
 import {
+  SectionMovieDetails,
   ContainerMovieCard,
   ContainerCardInfos,
   MoviePoster,
@@ -109,122 +110,126 @@ export default function MovieCardDetails({ movie }: { movie: IMovie }) {
   }, [movie.backdrop_path]);
 
   return (
-    <ContainerMovieCard style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <ContainerCardInfos>
-        <MoviePoster
-          src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
-          alt={movie.title}
-        />
-        <ContainerInfos>
-          <SectionTitles>
-            <MovieTitle>{movie.title}</MovieTitle>
-            <MovieOriginalTitle>
-              <p>Titulo original: {movie.original_title}</p>
-            </MovieOriginalTitle>
-            <MovieCatchFrase>{movie.tagline}</MovieCatchFrase>
-          </SectionTitles>
-          <SectionDescription>
-            <ContainerTitle>Sinopse</ContainerTitle>
-            <MovieDescription>{movie.overview}</MovieDescription>
-          </SectionDescription>
-          <SectionGenre>
-            <ContainerTitle>GENERO</ContainerTitle>
-            <Genres>
-              {movie.genres && movie.genres.length > 0
-                ? movie.genres.map((genre, index) => (
-                    <MovieGenre>
-                      <Genre key={index}>{genre.name}</Genre>
-                    </MovieGenre>
-                  ))
-                : "Desconhecido"}
-            </Genres>
-          </SectionGenre>{" "}
-        </ContainerInfos>
-        <ContainerMoreInfos>
-          <SectionVotes>
-            <MoviePopularity>
-              <PopularityTitle>POPULARIDADE</PopularityTitle>
-              <Popularity>{movie.popularity}</Popularity>
-            </MoviePopularity>
-            <MovieVotes>
-              <VotesTitle>VOTOS</VotesTitle>
-              <Votes>{movie.vote_count}</Votes>
-            </MovieVotes>
-            <SectionMovieAverage>
-              <MovieAverage>
-                {transformForPercent(movie.vote_average)}
-                <span style={{ color: "#fff" }}>%</span>
-              </MovieAverage>
-            </SectionMovieAverage>
-          </SectionVotes>
-          <SectionGeneralInfos>
-            <SectionMovieInfos>
-              <SectionLaunch>
-                <LaunchTitle>LANÇAMENTO</LaunchTitle>
-                <Launch>{formatDate(movie.release_date)}</Launch>
-              </SectionLaunch>
-              <SectionRuntime>
-                <RuntimeTitle>DURAÇÃO</RuntimeTitle>
-                <Runtime>{formatMinutesToHours(movie.runtime)}</Runtime>
-              </SectionRuntime>
-              <SectionStatus>
-                <StatusTitle>STATUS</StatusTitle>
-                <Status>{movie.status}</Status>
-              </SectionStatus>
-              <SectionOriginalLanguage>
-                <OriginalLanguageTitle>IDIOMA</OriginalLanguageTitle>
-                <OriginalLanguage>{movie.original_language}</OriginalLanguage>
-              </SectionOriginalLanguage>
-            </SectionMovieInfos>
-            <SectionMoney>
-              <SectionBudget>
-                <BudgetTitle>ORÇAMENTO</BudgetTitle>
-                <Budget>
-                  {movie.budget.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </Budget>
-              </SectionBudget>
-              <SectionRevenue>
-                <RevenueTitle>RECEITA</RevenueTitle>
-                <Revenue>
-                  {movie.revenue.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </Revenue>
-              </SectionRevenue>
-              <SectionProfit>
-                <ProfitTitle>LUCRO</ProfitTitle>
-                <Profit>
-                  {(movie.revenue - movie.budget).toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </Profit>
-              </SectionProfit>
-            </SectionMoney>
-          </SectionGeneralInfos>
-        </ContainerMoreInfos>
-        {movieVideos ? (
-          <>
-            <p
-              style={{
-                color: "#fff",
-                fontWeight: 700,
-                fontSize: "24px",
-                lineHeight: "29.26px",
-              }}
-            >
-              TRAILER
-            </p>
-            <VideoPlayer videoKey={movieVideos} />
-          </>
-        ) : (
-          <p>Vídeo não disponível.</p>
-        )}
-      </ContainerCardInfos>
-    </ContainerMovieCard>
+    <SectionMovieDetails>
+      <ContainerMovieCard
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
+        <ContainerCardInfos>
+          <MoviePoster
+            src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
+            alt={movie.title}
+          />
+          <ContainerInfos>
+            <SectionTitles>
+              <MovieTitle>{movie.title}</MovieTitle>
+              <MovieOriginalTitle>
+                <p>Titulo original: {movie.original_title}</p>
+              </MovieOriginalTitle>
+              <MovieCatchFrase>{movie.tagline}</MovieCatchFrase>
+            </SectionTitles>
+            <SectionDescription>
+              <ContainerTitle>Sinopse</ContainerTitle>
+              <MovieDescription>{movie.overview}</MovieDescription>
+            </SectionDescription>
+            <SectionGenre>
+              <ContainerTitle>GENERO</ContainerTitle>
+              <Genres>
+                {movie.genres && movie.genres.length > 0
+                  ? movie.genres.map((genre, index) => (
+                      <MovieGenre>
+                        <Genre key={index}>{genre.name}</Genre>
+                      </MovieGenre>
+                    ))
+                  : "Desconhecido"}
+              </Genres>
+            </SectionGenre>{" "}
+          </ContainerInfos>
+          <ContainerMoreInfos>
+            <SectionVotes>
+              <MoviePopularity>
+                <PopularityTitle>POPULARIDADE</PopularityTitle>
+                <Popularity>{movie.popularity}</Popularity>
+              </MoviePopularity>
+              <MovieVotes>
+                <VotesTitle>VOTOS</VotesTitle>
+                <Votes>{movie.vote_count}</Votes>
+              </MovieVotes>
+              <SectionMovieAverage>
+                <MovieAverage>
+                  {transformForPercent(movie.vote_average)}
+                  <span style={{ color: "#fff" }}>%</span>
+                </MovieAverage>
+              </SectionMovieAverage>
+            </SectionVotes>
+            <SectionGeneralInfos>
+              <SectionMovieInfos>
+                <SectionLaunch>
+                  <LaunchTitle>LANÇAMENTO</LaunchTitle>
+                  <Launch>{formatDate(movie.release_date)}</Launch>
+                </SectionLaunch>
+                <SectionRuntime>
+                  <RuntimeTitle>DURAÇÃO</RuntimeTitle>
+                  <Runtime>{formatMinutesToHours(movie.runtime)}</Runtime>
+                </SectionRuntime>
+                <SectionStatus>
+                  <StatusTitle>STATUS</StatusTitle>
+                  <Status>{movie.status}</Status>
+                </SectionStatus>
+                <SectionOriginalLanguage>
+                  <OriginalLanguageTitle>IDIOMA</OriginalLanguageTitle>
+                  <OriginalLanguage>{movie.original_language}</OriginalLanguage>
+                </SectionOriginalLanguage>
+              </SectionMovieInfos>
+              <SectionMoney>
+                <SectionBudget>
+                  <BudgetTitle>ORÇAMENTO</BudgetTitle>
+                  <Budget>
+                    {movie.budget.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    })}
+                  </Budget>
+                </SectionBudget>
+                <SectionRevenue>
+                  <RevenueTitle>RECEITA</RevenueTitle>
+                  <Revenue>
+                    {movie.revenue.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    })}
+                  </Revenue>
+                </SectionRevenue>
+                <SectionProfit>
+                  <ProfitTitle>LUCRO</ProfitTitle>
+                  <Profit>
+                    {(movie.revenue - movie.budget).toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    })}
+                  </Profit>
+                </SectionProfit>
+              </SectionMoney>
+            </SectionGeneralInfos>
+          </ContainerMoreInfos>
+        </ContainerCardInfos>
+      </ContainerMovieCard>
+      {movieVideos ? (
+        <>
+          <p
+            style={{
+              color: "#fff",
+              fontWeight: 700,
+              fontSize: "24px",
+              lineHeight: "29.26px",
+            }}
+          >
+            TRAILER
+          </p>
+          <VideoPlayer videoKey={movieVideos} />
+        </>
+      ) : (
+        <p>Vídeo não disponível.</p>
+      )}
+    </SectionMovieDetails>
   );
 }

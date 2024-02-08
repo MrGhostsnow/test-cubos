@@ -7,13 +7,28 @@ export const ContainerMovieDetails = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 1400px;
-  margin-bottom: 10rem;
+  height: 1500px;
   background-color: #121113;
+
+  @media screen and (max-width: 768px) {
+    height: 2700px;
+  }
+
+  @media screen and (max-width: 425px) {
+    height: 2000px;
+  }
 `;
 
 export const ContainerCard = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
+
+  @media screen and (max-width: 768px) {
+    height: 2700px;
+  }
+
+  @media screen and (max-width: 425px) {
+    height: 2500px;
+  }
 `;

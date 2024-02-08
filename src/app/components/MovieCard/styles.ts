@@ -10,26 +10,12 @@ export const ContainerMovieCard = styled.div`
   height: 330px;
   background-color: #ececef;
   font-family: "Montserrat", sans-serif;
-
-  
-
-  @media screen and (max-width: 768px) {
-    width: 700px;
-  }
-
-  @media screen and (max-width: 480px) {
-    width: 400px;
-    justify-content: center;
-  }
 `;
 
 export const MoviePoster = styled.img`
   max-width: 235px;
   max-height: 330px;
   color: #000;
-  @media screen and (max-width: 480px) {
-    display: none;
-  }
 `;
 
 export const SectionInfos = styled.div<SectionInfosProps>`

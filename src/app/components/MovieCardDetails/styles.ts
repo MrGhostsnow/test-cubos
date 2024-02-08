@@ -2,6 +2,35 @@
 import styled from "styled-components";
 
 
+export const SectionMovieDetails = styled.div`
+  width: 1530px;
+  height: 1400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+
+  @media screen and (max-width: 1440px) {
+    width: 1330px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 1000px;
+    height: 1100px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 700px;
+    height: 2300px;
+    gap: 2rem;
+  }
+
+  @media screen and (max-width: 425px) {
+    width: 300px;
+  }
+
+`;
+
 export const ContainerMovieCard = styled.div`
   display: flex; 
   background-size: cover;
@@ -9,6 +38,7 @@ export const ContainerMovieCard = styled.div`
   transition: background 0.5s ease; 
   position: relative;
   margin-top: -35rem;
+  
 
   &::before {
     content: ""; 
@@ -23,7 +53,8 @@ export const ContainerMovieCard = styled.div`
       rgba(18, 17, 19, 0.8),
       rgba(18, 17, 19, 0)
     );
-  }
+  }  
+
 `;
 
 export const ContainerCardInfos = styled.div`
@@ -32,11 +63,30 @@ export const ContainerCardInfos = styled.div`
   flex-direction: row; 
   align-items: center; 
   display: flex;
-  flex-wrap: wrap;
+  flx-wrap: wrap;
   width: 1530px;
-  height: 600px;
+  height: 100%;
   gap: 3rem;
   font-family: "Montserrat", sans-serif;
+
+  @media (max-width: 1440px) {
+   width: 1330px; 
+  }
+
+  @media (max-width: 1024px) {
+    width: 1000px;
+    justify-content: space-around;
+  }
+
+  @media (max-width: 768px) {
+    width: 700px;
+    flex-direction: column;
+  }
+
+  @media (max-width: 425px) {
+    width: 400px;
+  }
+
 `;
 export const  MoviePoster = styled.img`
   width: 350px;
@@ -44,6 +94,19 @@ export const  MoviePoster = styled.img`
   border-radius: 4px;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
   margin-left: 2rem;
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+
+  @media screen and (max-width: 425px) {
+    margin-left: 0.0rem;
+    margin-top: 1rem;
+  }
+
   `;	
 export const  ContainerInfos = styled.div`
   display: flex;
@@ -51,6 +114,24 @@ export const  ContainerInfos = styled.div`
   justify-content: space-around;
   width: 500px;
   height: 606px;
+
+  @media screen and (max-width: 1440px) {
+    width: 350px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 400px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 500px;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 425px) {
+    width: 350px;
+    height: 650px;
+  }
 `;
 export const  SectionTitles = styled.div`
   display: flex;
@@ -59,6 +140,11 @@ export const  SectionTitles = styled.div`
   height: 138px;
   justify-content: space-between;
   margin-top: 1.0rem;
+
+  @media screen and (max-width: 425px) {
+  align-items: center;
+  width: 330px;
+  }
 `;
 export const  MovieTitle = styled.h3`
   width: 443px;
@@ -66,6 +152,11 @@ export const  MovieTitle = styled.h3`
   font-weight: 600;
   font-size: 32px;
   line-height: 39px;
+
+  @media screen and (max-width: 425px) {
+    font-size: 24px;
+    width: 300px;
+  }
 `;
 export const  MovieOriginalTitle = styled.p`
   width: 312px;
@@ -75,6 +166,10 @@ export const  MovieOriginalTitle = styled.p`
   font-size: 16px;
   line-height: 19.5px;
   color: #B5B2BC;
+
+  @media screen and (max-width: 425px) {
+    width: 300px;
+  }
 `;
 export const  MovieCatchFrase = styled.p`
   width: 226px;
@@ -84,6 +179,10 @@ export const  MovieCatchFrase = styled.p`
   line-height: 19.5px;
   font-style: italic;
   color: #EEEEF0;
+
+  @media screen and (max-width: 425px) {
+    width: 300px;
+  }
 `;
 export const  SectionDescription = styled.div`
   width: 417.75px;
@@ -92,6 +191,11 @@ export const  SectionDescription = styled.div`
   padding: 16px;
   gap: 8px;
   background-color: rgba(35, 34, 37, 0.6);
+
+  @media screen and (max-width: 425px) {
+    width: 330px;
+    height: 350px;
+  }
 `;
 export const  ContainerTitle = styled.div`
   width: 75px;
@@ -108,6 +212,10 @@ export const  MovieDescription = styled.p`
   font-size: 16px;
   line-height: 19.5px;
   color: #EEEEF0;
+
+  @media screen and (max-width: 425px) {
+    width: 300px;
+  }
 `;
 export const  SectionGenre = styled.div`
   display: flex;
@@ -119,6 +227,10 @@ export const  SectionGenre = styled.div`
   padding: 16px;
   gap: 8px;
   background-color: rgba(35, 34, 37, 0.6);
+
+  @media screen and (max-width: 425px) {
+    width: 300px;
+  }
 `;
 
 export const Genres = styled.div`
@@ -150,6 +262,23 @@ export const ContainerMoreInfos = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5rem;
+
+  @media (max-width: 1440px) {
+    width: 300px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 500px;
+  }
+
+  @media (max-width: 768px) {
+    width: 500px;
+    align-items: center;
+  }
+
+  @media (max-width: 425px) {
+    width: 350px;
+  }
 `;
 export const  SectionVotes = styled.div`
   display: flex;
@@ -158,6 +287,21 @@ export const  SectionVotes = styled.div`
   gap: 2rem;
   width: 500px;
   height: 110px;
+
+  @media (max-width: 1440px) {
+    width: 400px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+    width: 500px;
+    justify-content: center;
+  }
+
+  @media (max-width: 425px) {
+    width: 300px;
+  }
+
 `;
 export const  MoviePopularity = styled.div`
   display: flex;
@@ -242,6 +386,15 @@ export const  SectionGeneralInfos = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    width: 500px;
+  }
+
+  @media (max-width: 425px) {
+    width: 350px;
+    gap: 1.5rem;
+  }
 `;
 
 export const SectionMovieInfos = styled.div`
@@ -249,6 +402,12 @@ export const SectionMovieInfos = styled.div`
   grid-template-columns: 1fr 1fr;
   width: 420px;
   height: 160px;
+
+  @media (max-width: 425px) {
+    width: 360px;
+    margin-top: 2rem;
+  }
+
 `;
 export const  SectionLaunch = styled.div`
   width: 200px;
@@ -257,6 +416,10 @@ export const  SectionLaunch = styled.div`
   padding: 16px;
   gap: 10px;
   background-color: rgba(35, 34, 37, 0.75);
+
+  @media (max-width: 425px) {
+    width: 175px;
+  }
 `;
 export const  LaunchTitle = styled.p`
   width: 91px;
@@ -281,6 +444,10 @@ export const SectionRuntime = styled.div`
   padding: 16px;
   gap: 10px;
   background-color: rgba(35, 34, 37, 0.75);
+
+  @media (max-width: 425px) {
+    width: 175px;
+  }
 `;
 export const RuntimeTitle = styled.p`
   width: 91px;
@@ -305,6 +472,10 @@ export const SectionStatus  = styled.div`
   padding: 16px;
   gap: 10px;
   background-color: rgba(35, 34, 37, 0.75);
+
+  @media (max-width: 425px) {
+    width: 175px;
+  }
   `;
 export const  StatusTitle = styled.p`
   width: 91px;
@@ -329,6 +500,10 @@ export const SectionOriginalLanguage = styled.div`
   padding: 16px;
   gap: 10px;
   background-color: rgba(35, 34, 37, 0.75);
+
+  @media (max-width: 425px) {
+    width: 175px;
+  }
   `;
 export const  OriginalLanguageTitle = styled.p`
   width: 91px;
@@ -351,6 +526,15 @@ export const SectionMoney = styled.div`
     width: 420px;
     height: 72px;
     gap: 16px;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+
+    @media (max-width: 425px) {
+      width: 360px;
+      flex-wrap: wrap;
+    }
   `;
 export const SectionBudget = styled.div`
   width: 138.58px ;

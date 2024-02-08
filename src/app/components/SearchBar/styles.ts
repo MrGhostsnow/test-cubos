@@ -4,16 +4,21 @@ import styled from "styled-components";
 export const ContainerSearchBar = styled.div`
   margin-top: 5rem;
   height: 100px;
-  margin-left: 4rem;
- 
+  margin-left: 4rem; 
 
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 50%;
     justify-content: center;
     align-items: center;
     margin-bottom: 3rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-left: 0;
+    margin-top: -5rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -44,4 +49,13 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   margin-left: 10px;
+
+  @media screen and (max-width: 768px) {
+    right: -165px;
+    top: -55px;
+  }
+
+  @media screen and (max-width: 480px) {
+    right: -80px;
+  }
 `;
